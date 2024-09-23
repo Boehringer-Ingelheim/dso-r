@@ -7,7 +7,7 @@
 #' @importFrom here here
 #'
 #' @param dir path to directory in which project shall be initialised
-#' @param name project name: e.g. BI_907828_1403_MDM2. Can't be empty
+#' @param name project name: e.g. single_cell_lung_atlas. Can't be empty
 #' @param description short project description. Can't be empty
 #'
 #' @keywords dso dvc yaml parameter project
@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' init(name = "BI_907828_1403_MDM2", description = "MDM2 Project")
+#' init(name = "single_cell_lung_atlas", description = "This analysis solves all our problems!")
 #' }
 #'
 init <- function(dir = here::here(),

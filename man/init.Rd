@@ -9,7 +9,7 @@ init(dir = here::here(), name = "", description = "")
 \arguments{
 \item{dir}{path to directory in which project shall be initialised}
 
-\item{name}{project name: e.g. BI_907828_1403_MDM2. Can't be empty}
+\item{name}{project name: e.g. single_cell_lung_atlas. Can't be empty}
 
 \item{description}{short project description. Can't be empty}
 }
@@ -21,7 +21,7 @@ Initialises a new project in a given directory.
 }
 \examples{
 \dontrun{
-init(name = "BI_907828_1403_MDM2", description = "MDM2 Project")
+init(name = "single_cell_lung_atlas", description = "This analysis solves all our problems!")
 }
 
 }
