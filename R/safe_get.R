@@ -17,13 +17,12 @@
 #' @importFrom stringr str_match_all
 #' @importFrom stringr str_replace
 #' @importFrom stringr coll
+#' @importFrom rlang caller_env
 #' @return converted nested list call in $ format
 .convert_list_call_to_dollar_format <- function(input_string, env = caller_env()) {
   
-  if(!is.na(input_string) && !is.null(input_string) %% !is.character(input_string)) 
+  if(!is.null(input_string) && !is.na(input_string) && !is.character(input_string)) 
     stop("input_string is not a non-NULL non-NA character string")
-  
-  suppressPackageStartupMessages(require(purrr))
   
   # Remove any whitespace
   x <- gsub("\\s", "", input_string)
@@ -43,6 +42,8 @@
   
   matches <- str_match_all(x, "\\[\\[(.*?)\\]\\]")
   
+  # evaluates all variables in [[]] in environment specified
+  # and returns function call as $ separated call
   if(!is.null(matches) && length(matches) > 0 && nrow(matches[[1]]) > 0 ) {
     for(i in 1:nrow(matches[[1]])) {
       tryCatch({
@@ -81,24 +82,47 @@
 #'   
 #' @param config_call nested list call
 #' @param env environment which is used to resolve variables in the list call
-#'
-#' @importFrom dso .convert_list_call_to_dollar_format
+#' @importFrom rlang caller_env
+#' 
 #' @export
 #' @return content of nested variable call
 safe_get <- function(config_call, env = caller_env()) {
-  config_parts <- dso::.convert_list_call_to_dollar_format(
+  if (!is.environment(env)) {
+    stop("env is not an environment or derived from an environment")
+  }
+  
+  # input can be a mixture of $, [[ ]], variable, etc. This 
+  # function converts everything into a uniform $ format while
+  # evaluating the variables in the specified environment
+  config_parts <- .convert_list_call_to_dollar_format(
       deparse(substitute(config_call)), env = env)
   
+  # input checks
+  error_prefix <- "config_call argument cannot be "
+  error_postfix <- ". Input could be configuration stored in list of lists, e.g. params$test$a, params[['test']][['a']], params$test[['a']] or params[[ var]]$a." 
+  if(config_parts == "NA") 
+    stop(paste0(error_prefix, "NA", error_postfix))
+  
+  if(config_parts == "NULL")
+    stop(paste0(error_prefix, "NULL", error_postfix))
+  
+  if(config_parts == "") 
+    stop(paste0(error_prefix, "empty", error_postfix))
+  
+  # split the $ separated input string
   config_parts <- strsplit(config_parts, "\\$")[[1]] 
-  # remove backticks
+  
+  # remove backticks `` to get the variable names
   config_parts <- gsub(pattern = "^`|`$", replacement = "", config_parts)
   
+  # the first variable is the base variable
   current_list <- get(config_parts[1], envir = env, inherits = FALSE)
   
   if (is.null(current_list)) {
     stop(paste0(config_parts[0], " does not exist."))
   }
   
+  # while iterating through the calls, check if the elements exist in the parent
   for (i in 2:length(config_parts)) {
     if (!exists(config_parts[[i]], envir = as.environment(current_list))) {
       stop(paste0("The element '", config_parts[[i]], "' does not exist in '", paste0(config_parts[1:(i-1)], collapse = "$"), "'."))
@@ -106,6 +130,7 @@ safe_get <- function(config_call, env = caller_env()) {
     current_list <- current_list[[config_parts[[i]]]]
   }
   
+  # return cannot be NULL
   if (is.null(current_list)) {
     stop(paste0("The call '", paste0(config_parts, collapse = "$"), "' is NULL."))
   }
