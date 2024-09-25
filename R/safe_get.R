@@ -17,7 +17,7 @@
 #' @importFrom stringr str_match_all
 #' @importFrom stringr str_replace
 #' @importFrom stringr coll
-#' @export
+#' @return converted nested list call in $ format
 .convert_list_call_to_dollar_format <- function(input_string, env = caller_env()) {
   
   if(!is.na(input_string) && !is.null(input_string) %% !is.character(input_string)) 
@@ -84,6 +84,7 @@
 #'
 #' @importFrom dso .convert_list_call_to_dollar_format
 #' @export
+#' @return content of nested variable call
 safe_get <- function(config_call, env = caller_env()) {
   config_parts <- dso::.convert_list_call_to_dollar_format(
       deparse(substitute(config_call)), env = env)
