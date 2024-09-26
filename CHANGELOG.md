@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 -   Added `testthat` testing
 -   Modified `read_params()` so that the default return value is `dsoParams` object, and added an argument that a standard list of lists can be returned.
 
-## v0.3.2
+## v0.3.1
 
 ### New Features
 
