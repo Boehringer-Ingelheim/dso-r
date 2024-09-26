@@ -19,7 +19,7 @@ test_that("dsoParams() should fail when there is no input", {
   expect_error(dsoParams(NA), "needs to be a list")
 })
 
-test_that("safe_get() should retrieve value expected", {
+test_that("dsoParams() should retrieve value expected", {
   params <- list()
   params$a <- "bla"
   params$b <- list()
