@@ -37,10 +37,6 @@ jobs:
 
       - uses: pre-commit/action@v2.0.3
 
-      - name: Document
-        run: roxygen2::roxygenise()
-        shell: Rscript {0}
-
       - uses: stefanzweifel/git-auto-commit-action@v4
         if: '!cancelled()'
         with:
