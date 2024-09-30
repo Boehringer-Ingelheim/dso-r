@@ -2,13 +2,13 @@ test_that("dsoParams() creation of dsoParams objects", {
   x <- dsoParams()
   expect_s3_class(x, "dsoParams")
   expect_equal(length(x), 0)
-  
+
   y <- list()
   y$a <- list()
   y$b <- "b"
   y$a$c <- "c"
   y <- dsoParams(y)
-  
+
   expect_s3_class(y, "dsoParams")
   expect_s3_class(y$a, "dsoParams")
 })
@@ -28,7 +28,7 @@ test_that("dsoParams() should retrieve value expected", {
   var_b <- "b"
   var_c <- "c"
   params <- dsoParams(params)
-  
+
   # styler: off
   expect_equal(params$a, "bla")
   expect_equal(params[[var_a]], "bla")
@@ -55,7 +55,7 @@ test_that("access to dsoParams() with $ and [[", {
   var_z <- "z"
   params <- dsoParams(params)
 
-  # styler: off 
+  # styler: off
   expect_error(params$z, "does not exist")
   expect_error(params[[var_z]], "does not exist")
   expect_error(params$z$c, "does not exist")
@@ -77,4 +77,3 @@ test_that("access to dsoParams() with $ and [[", {
   expect_error(params[[var_z]][[var_c]], "does not exist")
   # styler: on
 })
-
