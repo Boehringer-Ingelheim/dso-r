@@ -5,11 +5,7 @@
 \title{Custom show method for dsoParams class}
 \usage{
 \S4method{show}{dsoParams}(object)
-
-\S4method{show}{dsoParams}(object)
 }
 \description{
-Custom show method for dsoParams class
-
 Custom show method for dsoParams class
 }

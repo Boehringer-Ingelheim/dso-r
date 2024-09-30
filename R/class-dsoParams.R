@@ -47,52 +47,12 @@ dsoParams <- function( x = list()) {
 #' it cannot return NULL when call does not exist
 #' @export
 `[[.dsoParams` <- function(x, i, ...) {
-
   if (is.character(i) && !i %in% names(x)) {
     stop(paste("Element '", i, "' does not exist in dsoParams", sep = ""))
   } else if (is.numeric(i) && (i < 1 || i > length(x))) {
     stop(paste("Index '", i, "' is out of bounds in dsoParams", sep = ""))
   }
-
   NextMethod()
-}
-
-#' Custom show method for dsoParams class
-#' @export
-setMethod("show", "dsoParams", function(object) {
-  print_list <- function(x, indent = 0) {
-    spaces <- paste(rep(" ", indent), collapse = "")
-    if (is.list(x)) {
-      for (name in names(x)) {
-        cat(spaces, name, ":\n")
-        print_list(x[[name]], indent + 2)
-      }
-    } else {
-      cat(spaces, x, "\n")
-    }
-  }
-
-  cat("dsoParams Object:\n")
-  print_list(object)
-})
-
-#' Custom print method for dsoParams class
-#' @export
-print.dsoParams <- function(x, ...) {
-  print_list <- function(x, indent = 0) {
-    spaces <- paste(rep(" ", indent), collapse = "")
-    if (is.list(x)) {
-      for (name in names(x)) {
-        cat(spaces, name, ":\n")
-        print_list(x[[name]], indent + 2)
-      }
-    } else {
-      cat(spaces, x, "\n")
-    }
-  }
-
-  cat("dsoParams Object:\n")
-  print_list(x)
 }
 
 #' Custom print method for dsoParams class

@@ -5,11 +5,7 @@
 \title{Custom print method for dsoParams class}
 \usage{
 \method{print}{dsoParams}(object, ...)
-
-\method{print}{dsoParams}(object, ...)
 }
 \description{
-Custom print method for dsoParams class
-
 Custom print method for dsoParams class
 }
