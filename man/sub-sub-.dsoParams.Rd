@@ -7,6 +7,13 @@ it cannot return NULL when call does not exist}
 \usage{
 \method{[[}{dsoParams}(x, i, ...)
 }
+\arguments{
+\item{x}{dsoParams object}
+
+\item{i}{index for `[[` operator}
+
+\item{...}{additional arguments passed to the `[[` operator}
+}
 \description{
 And the [[ operator:  to add secure list calling so that
 it cannot return NULL when call does not exist

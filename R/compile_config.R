@@ -6,7 +6,7 @@
 #'
 #' @keywords dso dvc yaml compile config
 #'
-#' @param dir directory (including subdirectories and relevant parent files) to compile. By default compiles the current working directory. 
+#' @param dir directory (including subdirectories and relevant parent files) to compile. By default compiles the current working directory.
 #'
 #' @export
 #'

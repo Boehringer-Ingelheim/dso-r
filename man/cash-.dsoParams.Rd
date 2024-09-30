@@ -7,6 +7,9 @@ it cannot return NULL when call does not exist}
 \usage{
 \method{$}{dsoParams}(x, name)
 }
+\arguments{
+\item{x}{name field name}
+}
 \description{
 overriding the the $ operator to add secure list calling so that
 it cannot return NULL when call does not exist
