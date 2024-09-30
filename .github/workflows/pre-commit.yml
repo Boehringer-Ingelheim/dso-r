@@ -7,13 +7,15 @@
 # Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
+  push:
+    branches: [main]
   pull_request: 
-    branches: [main, master]
+    branches: [main]
 
-name: Document
+name: pre-commit 
 
 jobs:
-  document:
+  pre-commit:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -37,7 +39,7 @@ jobs:
 
       - uses: pre-commit/action@v2.0.3
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         if: '!cancelled()'
         with:
-          commit_message: Run pre-commit and roxygen
+          commit_message: pre-commit autofixes
