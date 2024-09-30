@@ -60,7 +60,7 @@ dsoParams <- function(x = list()) {
     stop(paste("Index '", i, "' is out of bounds in dsoParams", sep = ""))
   }
 
- 
+
   NextMethod()
 }
 
@@ -72,8 +72,10 @@ print.dsoParams <- function(object, ...) {
 
 #' Custom show method for dsoParams class
 #' @export
-setMethod(f = "show",
-          signature = "dsoParams",
-          definition = function(object) {
-            cat(yaml::as.yaml(object))
-          })
+setMethod(
+  f = "show",
+  signature = "dsoParams",
+  definition = function(object) {
+    cat(yaml::as.yaml(object))
+  }
+)
