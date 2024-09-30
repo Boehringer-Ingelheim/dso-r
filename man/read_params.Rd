@@ -4,10 +4,15 @@
 \alias{read_params}
 \title{read_params}
 \usage{
-read_params(stage_path)
+read_params(stage_path, return_list = FALSE)
 }
 \arguments{
 \item{stage_path}{relative path to stage directory from project root}
+
+\item{return_list}{returns a list if TRUE, by default it return `dsoParams` class which is a list with secure access}
+}
+\value{
+parameters as list of list as `dsoParams` or conventional list when `return_list` is set.
 }
 \description{
 Set stage dir and load parameters from params.yaml
