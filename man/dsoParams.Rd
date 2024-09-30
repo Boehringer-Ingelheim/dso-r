@@ -16,7 +16,7 @@ A "dsoParams" and its constructor:
 # initiating empty
 params <- dsoParams()
 
-# converting a list of list 
+# converting a list of list
 
 params <- list()
 params$a <- "bla"
