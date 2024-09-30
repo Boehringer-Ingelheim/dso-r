@@ -20,6 +20,7 @@ dsoParams <- function(x = list()) {
     stop("x needs to be a list or a list of lists.")
   }
 
+
   # recursively
   x <- lapply(x, function(y) {
     if (is.list(y)) {
@@ -59,5 +60,20 @@ dsoParams <- function(x = list()) {
     stop(paste("Index '", i, "' is out of bounds in dsoParams", sep = ""))
   }
 
+ 
   NextMethod()
 }
+
+#' Custom print method for dsoParams class
+#' @export
+print.dsoParams <- function(object, ...) {
+  cat(yaml::as.yaml(object))
+}
+
+#' Custom show method for dsoParams class
+#' @export
+setMethod(f = "show",
+          signature = "dsoParams",
+          definition = function(object) {
+            cat(yaml::as.yaml(object))
+          })
