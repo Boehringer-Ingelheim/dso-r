@@ -6,6 +6,9 @@
 \usage{
 compile_config(dir = getwd())
 }
+\arguments{
+\item{dir}{directory (including subdirectories and relevant parent files) to compile. By default compiles the current working directory.}
+}
 \description{
 Run dso compile-config
 }

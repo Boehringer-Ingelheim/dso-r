@@ -6,6 +6,9 @@
 \usage{
 stage_here(...)
 }
+\arguments{
+\item{...}{additional parts of the path appended to the stage path using `file.path`}
+}
 \value{
 absolute path to stage
 }

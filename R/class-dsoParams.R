@@ -15,17 +15,19 @@
 #' params <- dsoParams(params)
 #'
 #' @export
-dsoParams <- function( x = list()) {
-  if(! is.list(x))
+dsoParams <- function(x = list()) {
+  if (!is.list(x)) {
     stop("x needs to be a list or a list of lists.")
+  }
+
 
   # recursively
   x <- lapply(x, function(y) {
-      if(is.list(y)) {
-        dsoParams(y)
-      } else {
-        y
-      }
+    if (is.list(y)) {
+      dsoParams(y)
+    } else {
+      y
+    }
   })
   class(x) <- "dsoParams"
   return(x)
@@ -34,6 +36,8 @@ dsoParams <- function( x = list()) {
 
 #' overriding the the $ operator to add secure list calling so that
 #' it cannot return NULL when call does not exist
+#' @param x dsoParams object
+#' @param name field name
 #' @export
 `$.dsoParams` <- function(x, name) {
   if (!name %in% names(x)) {
@@ -45,6 +49,9 @@ dsoParams <- function( x = list()) {
 
 #' And the [[ operator:  to add secure list calling so that
 #' it cannot return NULL when call does not exist
+#' @param x dsoParams object
+#' @param i index for `[[` operator
+#' @param ... additional arguments passed to the `[[` operator
 #' @export
 `[[.dsoParams` <- function(x, i, ...) {
   if (is.character(i) && !i %in% names(x)) {
@@ -52,19 +59,26 @@ dsoParams <- function( x = list()) {
   } else if (is.numeric(i) && (i < 1 || i > length(x))) {
     stop(paste("Index '", i, "' is out of bounds in dsoParams", sep = ""))
   }
+
+
   NextMethod()
 }
 
 #' Custom print method for dsoParams class
 #' @export
+#' @param object dsoParams object
+#' @param ... additional parameters are ignored
 print.dsoParams <- function(object, ...) {
   cat(yaml::as.yaml(object))
 }
 
 #' Custom show method for dsoParams class
+#' @param object dsoParams object
 #' @export
-setMethod(f = "show",
-          signature = "dsoParams",
-          definition = function(object) {
-            cat(yaml::as.yaml(object))
-          })
+setMethod(
+  f = "show",
+  signature = "dsoParams",
+  definition = function(object) {
+    cat(yaml::as.yaml(object))
+  }
+)
