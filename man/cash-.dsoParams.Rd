@@ -8,7 +8,9 @@ it cannot return NULL when call does not exist}
 \method{$}{dsoParams}(x, name)
 }
 \arguments{
-\item{x}{name field name}
+\item{x}{dsoParams object}
+
+\item{name}{field name}
 }
 \description{
 overriding the the $ operator to add secure list calling so that

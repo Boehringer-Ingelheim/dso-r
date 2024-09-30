@@ -6,6 +6,11 @@
 \usage{
 \method{print}{dsoParams}(object, ...)
 }
+\arguments{
+\item{object}{dsoParams object}
+
+\item{...}{additional parameters are ignored}
+}
 \description{
 Custom print method for dsoParams class
 }
