@@ -34,6 +34,8 @@ dsoParams <- function( x = list()) {
 
 #' overriding the the $ operator to add secure list calling so that
 #' it cannot return NULL when call does not exist
+#' @param x dsoParams object
+#' @param x name field name
 #' @export
 `$.dsoParams` <- function(x, name) {
   if (!name %in% names(x)) {
@@ -45,6 +47,9 @@ dsoParams <- function( x = list()) {
 
 #' And the [[ operator:  to add secure list calling so that
 #' it cannot return NULL when call does not exist
+#' @param x dsoParams object
+#' @param i index for `[[` operator
+#' @param ... additional arguments passed to the `[[` operator
 #' @export
 `[[.dsoParams` <- function(x, i, ...) {
   
