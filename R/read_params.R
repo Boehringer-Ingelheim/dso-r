@@ -27,7 +27,7 @@ read_params <- function(stage_path, return_list = FALSE, quiet = FALSE) {
   }
   
   # set the stage path
-  stage_path <- set_stage(stage_path)
+  stage_path <- set_stage(stage_path, quiet = quiet)
   
   # creating a temp file to store output of dso get-config
   tmp_config_file <- tempfile()
