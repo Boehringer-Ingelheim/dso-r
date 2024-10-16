@@ -68,3 +68,24 @@ setMethod(f = "show",
           definition = function(object) {
             cat(yaml::as.yaml(object))
           })
+
+#Define the dsoParams class
+setClass("dsoParams")
+
+# Define the new method
+setMethod(
+  "as.list",
+  "dsoParams",
+  definition = 
+    function(object) {
+    lapply(object, function(x) {
+      if(class(x) == "dsoParams") {
+        as.list(unclass(x))
+      } else {
+        x
+      }
+    })
+  }
+)
+
+

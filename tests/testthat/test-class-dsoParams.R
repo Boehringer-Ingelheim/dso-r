@@ -7,11 +7,32 @@ test_that("dsoParams() creation of dsoParams objects", {
   y$a <- list()
   y$b <- "b"
   y$a$c <- "c"
-  y <- dsoParams(y)
+  z <- dsoParams(y)
   
-  expect_s3_class(y, "dsoParams")
-  expect_s3_class(y$a, "dsoParams")
+  expect_s3_class(z, "dsoParams")
+  expect_s3_class(z$a, "dsoParams")
+  
 })
+
+
+test_that("dsoParams() as.list convertion", {
+  x <- dsoParams()
+  
+  y <- list()
+  y$a <- list()
+  y$b <- "b"
+  y$a$c <- "c"
+  y$a$d <- "d"
+  y$a$e <- list()
+  y$a$e$f <- "f"
+  z <- dsoParams(y)
+  
+  expect_s3_class(z, "dsoParams")
+
+  expect_s3_class(z$a, "dsoParams")
+  
+})
+
 
 
 test_that("dsoParams() should fail when there is no input", {
