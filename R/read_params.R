@@ -9,17 +9,44 @@
 #'
 #' @param stage_path relative path to stage directory from project root
 #' @param return_list returns a list if TRUE, by default it return `dsoParams` class which is a list with secure access 
-#'
+#' @param quiet suppresses the warnings and errors of the `dso get-config` execution
+#' 
 #' @return parameters as list of list as `dsoParams` or conventional list when `return_list` is set.
 #' @importFrom yaml read_yaml
 #' @export
-read_params <- function(stage_path, return_list = FALSE) {
+read_params <- function(stage_path, return_list = FALSE, quiet = FALSE) {
+  if (!is.logical(quiet))
+    stop("quiet argument must be either TRUE or FALSE.")
+  
+  if (!is.logical(return_list)) 
+    stop("return_list argument must be either TRUE or FALSE.")
+  
+  arg_stderr = ""
+  if (quiet) {
+    arg_stderr = FALSE
+  }
+  
+  # set the stage path
   stage_path <- set_stage(stage_path)
+  
+  # creating a temp file to store output of dso get-config
   tmp_config_file <- tempfile()
-  result <- system2(DSO_EXEC, c("get-config", shQuote(stage_path)), stdout = tmp_config_file)
+  
+  # execute dso get-config and store ouput in temp file
+  result <- system2(
+                DSO_EXEC, 
+                c("get-config", shQuote(stage_path)), 
+                stdout = tmp_config_file,
+                stderr = arg_stderr
+            )
+  
+  # read the output of dso get-config as yaml
   yaml <- read_yaml(tmp_config_file)
+  
+  # remove the temp file
   unlink(tmp_config_file)
   
+  # return as list or dsoParams object
   if(return_list) {
      yaml  
   } else {
