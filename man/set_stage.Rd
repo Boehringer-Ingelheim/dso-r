@@ -4,10 +4,12 @@
 \alias{set_stage}
 \title{set_stage}
 \usage{
-set_stage(stage_path)
+set_stage(stage_path, quiet = F)
 }
 \arguments{
 \item{stage_path}{relative path to stage directory from project root}
+
+\item{quiet}{surpresses messages if TRUE}
 }
 \value{
 absolute path to stage

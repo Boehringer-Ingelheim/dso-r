@@ -65,6 +65,7 @@ read_params <- function(stage_path, return_list = FALSE, quiet = FALSE) {
 #' stage from the project root.
 #'
 #' @param stage_path relative path to stage directory from project root
+#' @param quiet surpresses messages if TRUE
 #'
 #' @importFrom here here
 #' @importFrom here i_am
@@ -73,12 +74,22 @@ read_params <- function(stage_path, return_list = FALSE, quiet = FALSE) {
 #' @return absolute path to stage
 #'
 #' @export
-set_stage <- function(stage_path) {
+set_stage <- function(stage_path, quiet = F) {
   # assuming there's a dvc.yaml in every stage
   # force the project dir to bet setup correctly.
   here::i_am(file.path(stage_path, "dvc.yaml"))
-  stage_dir <- here::here(stage_path)
-  message(glue::glue("stage_here() starts at {stage_dir}"))
+  
+  # call here::here and surpresses messages if quiet is TRUE
+  stage_dir <- withCallingHandlers(
+    here::here(stage_path),
+    message = function(e) if (quiet) invokeRestart("muffleMessage")
+  )
+  
+  # report stage dir if quite is FALSE
+  if(!quiet)
+    message(glue::glue("stage_here() starts at {stage_dir}"))
+  
+  # sets the stage_dir variable
   assign("stage_dir", stage_dir, envir = config_env)
   stage_dir
 }
