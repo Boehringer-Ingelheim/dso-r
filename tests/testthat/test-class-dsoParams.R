@@ -15,7 +15,6 @@ test_that("dsoParams() creation of dsoParams objects", {
 })
 
 
-
 test_that("dsoParams() should fail when there is no input", {
   expect_error(dsoParams(NULL), "needs to be a list")
   expect_error(dsoParams(NA), "needs to be a list")
@@ -88,7 +87,7 @@ test_that("dsoParams: as.list() convertion", {
   
   l_z <- as.list(z)
   expect_type(l_z, "list")
-  expect_s3_class(l_z, "dsoParams")
+  expect_equal(class(l_z), "list")
 })
 
 test_that("dsoParams: as.data.frame() convertion", {
