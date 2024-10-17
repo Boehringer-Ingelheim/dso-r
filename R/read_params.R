@@ -74,7 +74,7 @@ read_params <- function(stage_path, return_list = FALSE, quiet = FALSE) {
 #' @return absolute path to stage
 #'
 #' @export
-set_stage <- function(stage_path, quiet = F) {
+set_stage <- function(stage_path, quiet = FALSE) {
   # assuming there's a dvc.yaml in every stage
   # force the project dir to bet setup correctly.
   # Surpresses messages if quiet is TRUE
