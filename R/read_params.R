@@ -77,13 +77,14 @@ read_params <- function(stage_path, return_list = FALSE, quiet = FALSE) {
 set_stage <- function(stage_path, quiet = F) {
   # assuming there's a dvc.yaml in every stage
   # force the project dir to bet setup correctly.
-  here::i_am(file.path(stage_path, "dvc.yaml"))
-  
-  # call here::here and surpresses messages if quiet is TRUE
-  stage_dir <- withCallingHandlers(
-    here::here(stage_path),
+  # Surpresses messages if quiet is TRUE
+  withCallingHandlers(
+    here::i_am(file.path(stage_path, "dvc.yaml")),
     message = function(e) if (quiet) invokeRestart("muffleMessage")
   )
+  
+  # call here::here
+  stage_dir <- here::here(stage_path)
   
   # report stage dir if quite is FALSE
   if(!quiet)
