@@ -4,12 +4,14 @@
 \alias{read_params}
 \title{read_params}
 \usage{
-read_params(stage_path, return_list = FALSE)
+read_params(stage_path, return_list = FALSE, quiet = FALSE)
 }
 \arguments{
 \item{stage_path}{relative path to stage directory from project root}
 
 \item{return_list}{returns a list if TRUE, by default it return `dsoParams` class which is a list with secure access}
+
+\item{quiet}{suppresses the warnings and errors of the `dso get-config` execution}
 }
 \value{
 parameters as list of list as `dsoParams` or conventional list when `return_list` is set.

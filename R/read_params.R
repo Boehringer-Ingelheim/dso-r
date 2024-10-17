@@ -9,17 +9,44 @@
 #'
 #' @param stage_path relative path to stage directory from project root
 #' @param return_list returns a list if TRUE, by default it return `dsoParams` class which is a list with secure access 
-#'
+#' @param quiet suppresses the warnings and errors of the `dso get-config` execution
+#' 
 #' @return parameters as list of list as `dsoParams` or conventional list when `return_list` is set.
 #' @importFrom yaml read_yaml
 #' @export
-read_params <- function(stage_path, return_list = FALSE) {
-  stage_path <- set_stage(stage_path)
+read_params <- function(stage_path, return_list = FALSE, quiet = FALSE) {
+  if (!is.logical(quiet))
+    stop("quiet argument must be either TRUE or FALSE.")
+  
+  if (!is.logical(return_list)) 
+    stop("return_list argument must be either TRUE or FALSE.")
+  
+  arg_stderr = ""
+  if (quiet) {
+    arg_stderr = FALSE
+  }
+  
+  # set the stage path
+  stage_path <- set_stage(stage_path, quiet = quiet)
+  
+  # creating a temp file to store output of dso get-config
   tmp_config_file <- tempfile()
-  result <- system2(DSO_EXEC, c("get-config", shQuote(stage_path)), stdout = tmp_config_file)
+  
+  # execute dso get-config and store ouput in temp file
+  result <- system2(
+                DSO_EXEC, 
+                c("get-config", shQuote(stage_path)), 
+                stdout = tmp_config_file,
+                stderr = arg_stderr
+            )
+  
+  # read the output of dso get-config as yaml
   yaml <- read_yaml(tmp_config_file)
+  
+  # remove the temp file
   unlink(tmp_config_file)
   
+  # return as list or dsoParams object
   if(return_list) {
      yaml  
   } else {
@@ -38,6 +65,7 @@ read_params <- function(stage_path, return_list = FALSE) {
 #' stage from the project root.
 #'
 #' @param stage_path relative path to stage directory from project root
+#' @param quiet surpresses messages if TRUE
 #'
 #' @importFrom here here
 #' @importFrom here i_am
@@ -46,12 +74,23 @@ read_params <- function(stage_path, return_list = FALSE) {
 #' @return absolute path to stage
 #'
 #' @export
-set_stage <- function(stage_path) {
+set_stage <- function(stage_path, quiet = FALSE) {
   # assuming there's a dvc.yaml in every stage
   # force the project dir to bet setup correctly.
-  here::i_am(file.path(stage_path, "dvc.yaml"))
+  # Surpresses messages if quiet is TRUE
+  withCallingHandlers(
+    here::i_am(file.path(stage_path, "dvc.yaml")),
+    message = function(e) if (quiet) invokeRestart("muffleMessage")
+  )
+  
+  # call here::here
   stage_dir <- here::here(stage_path)
-  message(glue::glue("stage_here() starts at {stage_dir}"))
+  
+  # report stage dir if quite is FALSE
+  if(!quiet)
+    message(glue::glue("stage_here() starts at {stage_dir}"))
+  
+  # sets the stage_dir variable
   assign("stage_dir", stage_dir, envir = config_env)
   stage_dir
 }
