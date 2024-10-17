@@ -27,7 +27,7 @@ dsoParams <- function( x = list()) {
         y
       }
   })
-  class(x) <- "dsoParams"
+  class(x) <- c("dsoParams", "list")
   return(x)
 }
 
@@ -69,18 +69,15 @@ setMethod(f = "show",
             cat(yaml::as.yaml(object))
           })
 
-#Define the dsoParams class
-setClass("dsoParams")
-
-# Define the new method
+# Custom as.list method for dsoParams class
+#' @export
 setMethod(
-  "as.list",
-  "dsoParams",
-  definition = 
-    function(object) {
-    lapply(object, function(x) {
-      if(class(x) == "dsoParams") {
-        as.list(unclass(x))
+  f = "as.list",  
+  signature = "dsoParams",
+  definition = function(x) {
+    lapply(x, function(y) {
+      if("dsoParams" %in% class(y)) {
+        as.list(unclass(y))
       } else {
         x
       }
