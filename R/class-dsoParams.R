@@ -3,9 +3,10 @@
 #' @slot params A list of lists containing parameters
 #' @export
 setClass("dsoParams",
-         slots = list(
-           params = "list"
-         ))
+  slots = list(
+    params = "list"
+  )
+)
 
 #' A "dsoParams" and its constructor:
 #'
