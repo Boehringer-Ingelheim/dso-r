@@ -3,12 +3,9 @@
 \docType{class}
 \name{dsoParams-class}
 \alias{dsoParams-class}
-\title{dsoParams: list with safe access}
-\arguments{
-\item{x}{empty, or a recursive list of lists which is converted to dsoParams}
-}
+\title{dsoParams class}
 \description{
-A "dsoParams" and its constructor:
+dsoParams class
 }
 \section{Slots}{
 
@@ -16,18 +13,3 @@ A "dsoParams" and its constructor:
 \item{\code{params}}{A list of lists containing parameters}
 }}
 
-\examples{
-# initiating empty
-params <- dsoParams()
-
-# converting a list of list
-
-params <- list()
-params$a <- "bla"
-params$b <- list()
-params$b$c <- "blub"
-params <- dsoParams(params)
-
-dsoParams class
-
-}

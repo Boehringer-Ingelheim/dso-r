@@ -1,3 +1,12 @@
+#' dsoParams class
+#'
+#' @slot params A list of lists containing parameters
+#' @export
+setClass("dsoParams",
+         slots = list(
+           params = "list"
+         ))
+
 #' A "dsoParams" and its constructor:
 #'
 #' @title dsoParams: list with safe access
@@ -15,16 +24,6 @@
 #' params$b$c <- "blub"
 #' params <- dsoParams(params)
 #'
-#' dsoParams class
-#'
-#' @slot params A list of lists containing parameters
-#' @export
-setClass("dsoParams",
-         slots = list(
-           params = "list"
-         ))
-#'
-
 #' @export
 dsoParams <- function(x = list()) {
   if (!is.list(x)) {
@@ -41,7 +40,6 @@ dsoParams <- function(x = list()) {
   class(x) <- c("dsoParams", "list")
   return(x)
 }
-
 
 #' overriding the the $ operator to add secure list calling so that
 #' it cannot return NULL when call does not exist
@@ -74,14 +72,15 @@ dsoParams <- function(x = list()) {
 }
 
 #' Custom print method for dsoParams class
-#' @export
 #' @param x dsoParams object
 #' @param ... additional parameters are ignored
+#' @export
 print.dsoParams <- function(x, ...) {
   cat(yaml::as.yaml(x))
 }
 
 #' Custom show method for dsoParams class
+#' @importFrom methods show
 #' @param object dsoParams object
 #' @export
 setMethod(
