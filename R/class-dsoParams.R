@@ -2,6 +2,9 @@
 #'
 #' @title dsoParams: list with safe access
 #' @param x empty, or a recursive list of lists which is converted to dsoParams
+#'
+#' @importFrom methods show
+#'
 #' @examples
 #' # initiating empty
 #' params <- dsoParams()
@@ -66,19 +69,19 @@ dsoParams <- function(x = list()) {
 
 #' Custom print method for dsoParams class
 #' @export
-#' @param object dsoParams object
+#' @param x dsoParams object
 #' @param ... additional parameters are ignored
-print.dsoParams <- function(object, ...) {
-  cat(yaml::as.yaml(object))
+print.dsoParams <- function(x, ...) {
+  cat(yaml::as.yaml(x))
 }
 
 #' Custom show method for dsoParams class
-#' @param object dsoParams object
+#' @param x dsoParams object
 #' @export
 setMethod(
   f = "show",
   signature = "dsoParams",
-  definition = function(object) {
-    cat(yaml::as.yaml(object))
+  definition = function(x) {
+    cat(yaml::as.yaml(x))
   }
 )

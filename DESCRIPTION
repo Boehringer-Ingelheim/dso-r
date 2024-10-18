@@ -17,6 +17,7 @@ Imports:
     glue,
     here,
     stringr,
+    methods,
     rlang
 RoxygenNote: 7.3.2
 Suggests:
