@@ -17,13 +17,22 @@
 #' params$b$c <- "blub"
 #' params <- dsoParams(params)
 #'
+
+#' dsoParams class
+#'
+#' @slot params A list of lists containing parameters
+#' @export
+setClass("dsoParams",
+         slots = list(
+           params = "list"
+         ))
+#'
+
 #' @export
 dsoParams <- function(x = list()) {
   if (!is.list(x)) {
     stop("x needs to be a list or a list of lists.")
   }
-
-
   # recursively
   x <- lapply(x, function(y) {
     if (is.list(y)) {
@@ -81,8 +90,8 @@ print.dsoParams <- function(x, ...) {
 setMethod(
   f = "show",
   signature = "dsoParams",
-  definition = function(x) {
-    cat(yaml::as.yaml(x))
+  definition = function(object) {
+    cat(yaml::as.yaml(object))
   }
 )
 

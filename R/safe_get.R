@@ -18,6 +18,7 @@
 #' @importFrom stringr str_replace
 #' @importFrom stringr coll
 #' @importFrom rlang caller_env
+#'
 #' @return converted nested list call in $ format
 .convert_list_call_to_dollar_format <- function(input_string, env = caller_env()) {
   if (!is.null(input_string) && !is.na(input_string) && !is.character(input_string)) {
