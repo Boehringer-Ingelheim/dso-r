@@ -3,8 +3,6 @@
 #' @title dsoParams: list with safe access
 #' @param x empty, or a recursive list of lists which is converted to dsoParams
 #'
-#' @importFrom methods show
-#'
 #' @examples
 #' # initiating empty
 #' params <- dsoParams()
@@ -17,7 +15,6 @@
 #' params$b$c <- "blub"
 #' params <- dsoParams(params)
 #'
-
 #' dsoParams class
 #'
 #' @slot params A list of lists containing parameters
@@ -85,7 +82,7 @@ print.dsoParams <- function(x, ...) {
 }
 
 #' Custom show method for dsoParams class
-#' @param x dsoParams object
+#' @param object dsoParams object
 #' @export
 setMethod(
   f = "show",
@@ -95,7 +92,9 @@ setMethod(
   }
 )
 
-# Custom as.list method for dsoParams class
+#' Custom as.list method for dsoParams class
+#' @param x dsoParams object
+#' @return A list
 #' @export
 setMethod(
   f = "as.list",
@@ -105,7 +104,7 @@ setMethod(
       if ("dsoParams" %in% class(y)) {
         as.list(unclass(y))
       } else {
-        x
+        y
       }
     })
   }

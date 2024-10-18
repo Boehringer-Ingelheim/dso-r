@@ -7,7 +7,7 @@
 \S4method{show}{dsoParams}(object)
 }
 \arguments{
-\item{x}{dsoParams object}
+\item{object}{dsoParams object}
 }
 \description{
 Custom show method for dsoParams class
