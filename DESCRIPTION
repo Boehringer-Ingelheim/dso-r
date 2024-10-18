@@ -1,22 +1,25 @@
 Package: dso
 Type: Package
-Title: dso R companion package 
-Version: 0.4.2
+Title: dso R companion package
+Version: 0.4.3
 Author: Daniel Schreyer<daniel.schreyer.ext@boehringer-ingelheim.com>,
-    Gregor Sturm<gregor.sturm@boehringer-ingelheim.com>, 
+    Gregor Sturm<gregor.sturm@boehringer-ingelheim.com>,
     Thomas Schwarzl<thomas.schwarzl@boehringer-ingelheim.com>
 Maintainer: Daniel Schreyer<daniel.schreyer.ext@boehringer-ingelheim.com>,
-    Gregor Sturm<gregor.sturm@boehringer-ingelheim.com>, 
+    Gregor Sturm<gregor.sturm@boehringer-ingelheim.com>,
     Thomas Schwarzl<thomas.schwarzl@boehringer-ingelheim.com>
-Description: Collection of functions used with the DevOps dso application. 
+Description: Collection of functions used with the DevOps dso application.
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
     yaml,
     glue,
-    here
-RoxygenNote: 7.3.1
-Suggests: 
+    here,
+    stringr,
+    methods,
+    rlang
+RoxygenNote: 7.3.2
+Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

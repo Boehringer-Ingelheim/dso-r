@@ -1,0 +1,5 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.pre-commit-config\.yaml$
+^\.github$
+^CHANGELOG\.md$

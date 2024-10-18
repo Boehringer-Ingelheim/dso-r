@@ -4,7 +4,12 @@
 \alias{print.dsoParams}
 \title{Custom print method for dsoParams class}
 \usage{
-\method{print}{dsoParams}(object, ...)
+\method{print}{dsoParams}(x, ...)
+}
+\arguments{
+\item{x}{dsoParams object}
+
+\item{...}{additional parameters are ignored}
 }
 \description{
 Custom print method for dsoParams class

@@ -12,7 +12,8 @@ test_that("safe_get() should retrieve value expected", {
   var_a <- "a"
   var_b <- "b"
   var_c <- "c"
-  
+
+  # styler: off
   expect_equal(safe_get(params$a), "bla")
   expect_equal(safe_get(params[[var_a]]), "bla")
   expect_equal(safe_get(params$b$c), "blub")
@@ -23,6 +24,7 @@ test_that("safe_get() should retrieve value expected", {
   expect_equal(safe_get(params[[var_b]][["c"]]), "blub")
   expect_equal(safe_get(params[["b"]][[var_c]]), "blub")
   expect_equal(safe_get(params[[var_b]][[var_c]]), "blub")
+  # styler: on
 })
 
 
@@ -35,7 +37,8 @@ test_that("safe_get() should raise error when call does not exist", {
   var_b <- "b"
   var_c <- "c"
   var_z <- "z"
-  
+
+  # styler: off
   expect_error(safe_get(params$z), "does not exist")
   expect_error(safe_get(params[[var_z]]), "does not exist")
   expect_error(safe_get(params$z$c), "does not exist")
@@ -55,5 +58,5 @@ test_that("safe_get() should raise error when call does not exist", {
   expect_error(safe_get(params[["b"]][[var_z]]), "does not exist")
   expect_error(safe_get(params[[var_b]][[var_z]]), "does not exist")
   expect_error(safe_get(params[[var_z]][[var_c]]), "does not exist")
+  # styler: on
 })
-
