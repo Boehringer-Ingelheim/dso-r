@@ -2,15 +2,16 @@ test_that("dsoParams() creation of dsoParams objects", {
   x <- dsoParams()
   expect_s3_class(x, "dsoParams")
   expect_equal(length(x), 0)
-  
+
   y <- list()
   y$a <- list()
   y$b <- "b"
   y$a$c <- "c"
-  y <- dsoParams(y)
-  
-  expect_s3_class(y, "dsoParams")
-  expect_s3_class(y$a, "dsoParams")
+
+  z <- dsoParams(y)
+
+  expect_s3_class(z, "dsoParams")
+  expect_s3_class(z$a, "dsoParams")
 })
 
 
@@ -28,7 +29,8 @@ test_that("dsoParams() should retrieve value expected", {
   var_b <- "b"
   var_c <- "c"
   params <- dsoParams(params)
-  
+
+  # styler: off
   expect_equal(params$a, "bla")
   expect_equal(params[[var_a]], "bla")
   expect_equal(params$b$c, "blub")
@@ -39,6 +41,7 @@ test_that("dsoParams() should retrieve value expected", {
   expect_equal(params[[var_b]][["c"]], "blub")
   expect_equal(params[["b"]][[var_c]], "blub")
   expect_equal(params[[var_b]][[var_c]], "blub")
+  # styler: on
 })
 
 
@@ -52,7 +55,8 @@ test_that("access to dsoParams() with $ and [[", {
   var_c <- "c"
   var_z <- "z"
   params <- dsoParams(params)
-  
+
+  # styler: off
   expect_error(params$z, "does not exist")
   expect_error(params[[var_z]], "does not exist")
   expect_error(params$z$c, "does not exist")
@@ -72,5 +76,34 @@ test_that("access to dsoParams() with $ and [[", {
   expect_error(params[["b"]][[var_z]], "does not exist")
   expect_error(params[[var_b]][[var_z]], "does not exist")
   expect_error(params[[var_z]][[var_c]], "does not exist")
+  # styler: on
 })
 
+test_that("dsoParams: as.list() convertion", {
+  y <- list()
+  y$a <- list()
+  y$b <- "b"
+  y$a$c <- "c"
+  y$a$d <- "d"
+  y$a$e <- list()
+  y$a$e$f <- "f"
+  z <- dsoParams(y)
+
+  l_z <- as.list(z)
+  expect_type(l_z, "list")
+  expect_equal(class(l_z), "list")
+})
+
+test_that("dsoParams: as.data.frame() convertion", {
+  y <- list()
+  y$a <- list()
+  y$b <- "b"
+  y$a$c <- "c"
+  y$a$d <- "d"
+  y$a$e <- list()
+  y$a$e$f <- "f"
+  z <- dsoParams(y)
+
+  l_z <- as.data.frame(z)
+  expect_s3_class(l_z, "data.frame")
+})

@@ -8,7 +8,7 @@
 #' to ensure that up-to-date params are always loaded.
 #'
 #' @param stage_path relative path to stage directory from project root
-#' @param return_list returns a list if TRUE, by default it return `dsoParams` class which is a list with secure access 
+#' @param return_list returns a list if TRUE, by default it return `dsoParams` class which is a list with secure access
 #'
 #' @return parameters as list of list as `dsoParams` or conventional list when `return_list` is set.
 #' @importFrom yaml read_yaml
@@ -32,11 +32,11 @@ read_params <- function(stage_path, return_list = FALSE) {
   
   yaml <- read_yaml(tmp_config_file)
   unlink(tmp_config_file)
-  
-  if(return_list) {
-     yaml  
+
+  if (return_list) {
+    yaml
   } else {
-     dsoParams(yaml)
+    dsoParams(yaml)
   }
 }
 
@@ -76,6 +76,7 @@ set_stage <- function(stage_path) {
 #' Get the absolute path to the current stage. The current stage can be set using set_stage()
 #' by providing the relative path of the stage from the project root directory.
 #' to the stage dir.
+#' @param ... additional parts of the path appended to the stage path using `file.path`
 #' @export
 #' @return absolute path to stage
 stage_here <- function(...) {

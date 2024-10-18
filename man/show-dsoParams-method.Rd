@@ -6,6 +6,9 @@
 \usage{
 \S4method{show}{dsoParams}(object)
 }
+\arguments{
+\item{object}{dsoParams object}
+}
 \description{
 Custom show method for dsoParams class
 }

@@ -18,13 +18,13 @@ content of nested variable call
 safe checks a nested list call and returns requested value
 }
 \details{
-When accessing parameters stored in a list of list like `params$a$b$c`, 
-R will return `NULL` if an empty slot is accessed intentionally or 
+When accessing parameters stored in a list of list like `params$a$b$c`,
+R will return `NULL` if an empty slot is accessed intentionally or
 by accident: e.g. `params$a$d$c` (where `d` does not exist) will return
-in `NULL`. This can lead to unwanted behavior. 
+in `NULL`. This can lead to unwanted behavior.
 
 safe_get() will produce an error and point to the slot accessed incorrectly.
-It can utilize other forms of access like params[["a"]]$b$c or 
+It can utilize other forms of access like params[["a"]]$b$c or
 var <- "a"; params[[a]]. Variables will be resolved from the caller_env()
 by default, but can be changed passing through the `env` parameter.
 }
