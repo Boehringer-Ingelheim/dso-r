@@ -75,20 +75,22 @@ print.dsoParams <- function(object, ...) {
 #' Custom show method for dsoParams class
 #' @param object dsoParams object
 #' @export
-setMethod(f = "show",
-          signature = "dsoParams",
-          definition = function(object) {
-            cat(yaml::as.yaml(object))
-          })
+setMethod(
+  f = "show",
+  signature = "dsoParams",
+  definition = function(object) {
+    cat(yaml::as.yaml(object))
+  }
+)
 
 # Custom as.list method for dsoParams class
 #' @export
 setMethod(
-  f = "as.list",  
+  f = "as.list",
   signature = "dsoParams",
   definition = function(x) {
     lapply(x, function(y) {
-      if("dsoParams" %in% class(y)) {
+      if ("dsoParams" %in% class(y)) {
         as.list(unclass(y))
       } else {
         x

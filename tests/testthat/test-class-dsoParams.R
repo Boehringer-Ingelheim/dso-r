@@ -9,9 +9,9 @@ test_that("dsoParams() creation of dsoParams objects", {
   y$a$c <- "c"
 
   z <- dsoParams(y)
-  
+
   expect_s3_class(z, "dsoParams")
-  expect_s3_class(z$a, "dsoParams")  
+  expect_s3_class(z$a, "dsoParams")
 })
 
 
@@ -88,7 +88,7 @@ test_that("dsoParams: as.list() convertion", {
   y$a$e <- list()
   y$a$e$f <- "f"
   z <- dsoParams(y)
-  
+
   l_z <- as.list(z)
   expect_type(l_z, "list")
   expect_equal(class(l_z), "list")
@@ -103,8 +103,7 @@ test_that("dsoParams: as.data.frame() convertion", {
   y$a$e <- list()
   y$a$e$f <- "f"
   z <- dsoParams(y)
-  
+
   l_z <- as.data.frame(z)
   expect_s3_class(l_z, "data.frame")
 })
-
