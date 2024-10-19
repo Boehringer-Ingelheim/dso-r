@@ -39,7 +39,6 @@ read_params <- function(stage_path, return_list = FALSE) {
         )
       )
     }
-    
   }, error = function(e) {
     stop("An error occurred when executing dso get-config: ", e$message)
   })
