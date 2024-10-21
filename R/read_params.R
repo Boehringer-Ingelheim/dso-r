@@ -16,15 +16,28 @@
 read_params <- function(stage_path, return_list = FALSE) {
   stage_path <- set_stage(stage_path)
   tmp_config_file <- tempfile()
+  tmp_err_file <- tempfile()
 
   tryCatch({
     output <- system2(DSO_EXEC,
                       c("get-config",
                         shQuote(stage_path)),
                       stdout = tmp_config_file,
-                      stderr = TRUE)
-    if (any(grepl("ERROR", output))) {
-      stop(paste("An error occurred when executing dso get-config: ", output))
+                      stderr = tmp_err_file)
+
+    stderror <- readLines(tmp_err_file)
+
+    # error handling, display only rows after first error
+    # for better readability
+    if (output != 0 || any(grepl("ERROR", stderror))) {
+      stop(
+        paste("An error occurred when executing dso get-config:\n",
+              paste(
+                stderror[which(grepl("ERROR", stderror)) : length(stderror)],
+                collapse = "\n"
+              )
+        )
+      )
     }
   }, error = function(e) {
     stop("An error occurred when executing dso get-config: ", e$message)
