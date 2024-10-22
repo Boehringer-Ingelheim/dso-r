@@ -7,14 +7,24 @@
 #' is any subdirectory of the project root). The function recompiles params.in.yaml to params.yaml on-the-fly
 #' to ensure that up-to-date params are always loaded.
 #'
-#' @param stage_path relative path to stage directory from project root
+#' @param stage_path relative path to stage directory from project root, when NULL, already set stage path will be taken from the config_environment
 #' @param return_list returns a list if TRUE, by default it return `dsoParams` class which is a list with secure access
 #'
 #' @return parameters as list of list as `dsoParams` or conventional list when `return_list` is set.
 #' @importFrom yaml read_yaml
 #' @export
-read_params <- function(stage_path, return_list = FALSE) {
-  stage_path <- set_stage(stage_path)
+read_params <- function(stage_path = NULL, return_list = FALSE) {
+  
+  if(is.null(stage_path) && is.null(config_env$stage_path)) {
+    stop("stage_path argument missing.")
+  } else {
+    if(!is.null(stage_path)) {
+      stage_path <- set_stage(stage_path)
+    } else {
+      cat(paste("using stage_path from config_env:", config_env$stage_path))
+    }
+  } 
+  
   tmp_config_file <- tempfile()
   tmp_err_file <- tempfile()
 

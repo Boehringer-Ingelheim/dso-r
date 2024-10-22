@@ -109,3 +109,23 @@ setMethod(
     })
   }
 )
+
+
+# Generic for function reload
+reload <- function(object) {
+  UseMethod("reload")
+}
+
+#' Create a new method "reload" for class dsoParams
+#' @param object dsoParams object
+#' @export
+reload.dsoParams <- function(object) {
+  if (!inherits(object, "dsoParams")) {
+    stop("The object is not of class 'dsoParams'")
+  }
+  
+  object <<- read_params()
+  
+  invisible(object)
+}
+

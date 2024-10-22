@@ -3,6 +3,7 @@
 S3method("$",dsoParams)
 S3method("[[",dsoParams)
 S3method(print,dsoParams)
+S3method(reload,dsoParams)
 export(compile_config)
 export(create_stage)
 export(dsoParams)
