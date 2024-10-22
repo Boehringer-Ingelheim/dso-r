@@ -111,12 +111,13 @@ setMethod(
 )
 
 
-# Generic for function reload
+#' Generic for function reload
+#' @export
 reload <- function(object) {
   UseMethod("reload")
 }
 
-#' Create a new method "reload" for class dsoParams
+#' @title reloads the current dsoParams config into object
 #' @param object dsoParams object
 #' @export
 reload.dsoParams <- function(object) {
