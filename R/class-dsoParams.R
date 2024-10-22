@@ -113,14 +113,13 @@ setMethod(
 
 #' Generic for function reload
 #' @export
-reload <- function(object) {
-  UseMethod("reload")
-}
+setGeneric("reload", function(object,...) standardGeneric("reload"))
+
 
 #' @title reloads the current dsoParams config into object
 #' @param object dsoParams object
 #' @export
-reload.dsoParams <- function(object) {
+setMethod("reload", "dsoParams", function(object) {
   if (!inherits(object, "dsoParams")) {
     stop("The object is not of class 'dsoParams'")
   }
@@ -128,5 +127,7 @@ reload.dsoParams <- function(object) {
   object <<- read_params()
   
   invisible(object)
-}
+})
+
+
 
