@@ -34,6 +34,7 @@ read_params <- function(stage_path = NULL, return_list = FALSE) {
       stop("stage_path argument missing.")
     } else {
       cat(paste("reloading from already set stage_path:", config_env$stage_dir))
+      stage_path <- config_env$stage_dir
     } 
   }
     
