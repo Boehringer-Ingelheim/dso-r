@@ -30,7 +30,7 @@ read_params <- function(stage_path = NULL, return_list = FALSE) {
   } else {
     # stage_path argument is null, therefore not set. Check if stage_dir
     # has been already set in config_env, if yes reload, if not, stop with error
-    if(is.null(config_env$stage_path)) {
+    if(is.null(config_env$stage_dir)) {
       stop("stage_path argument missing.")
     } else {
       cat(paste("reloading from already set stage_path:", config_env$stage_dir))
