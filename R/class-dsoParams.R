@@ -123,11 +123,8 @@ setMethod("reload", "dsoParams", function(object) {
   if (!inherits(object, "dsoParams")) {
     stop("The object is not of class 'dsoParams'")
   }
-  
+
   object <<- read_params()
-  
+
   invisible(object)
 })
-
-
-

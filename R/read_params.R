@@ -14,19 +14,19 @@
 #' @importFrom yaml read_yaml
 #' @export
 read_params <- function(stage_path = NULL, return_list = FALSE) {
-  if(!is.logical(return_list)) 
+  if(!is.logical(return_list))
     stop("Argument return_list needs to be logical.")
-  
+
   # if stage_path argument was path, set stage from that argument
   if(!is.null(stage_path)) {
-    
+
     # first check for input validity
     if(!is.character(stage_path))
       stop("stage_path argument must be a character string or NULL to reload the config")
-    
+
     # then set stage path
     stage_path <- set_stage(stage_path)
-    
+
   } else {
     # stage_path argument is null, therefore not set. Check if stage_dir
     # has been already set in config_env, if yes reload, if not, stop with error
@@ -35,9 +35,9 @@ read_params <- function(stage_path = NULL, return_list = FALSE) {
     } else {
       cat(paste("reloading from already set stage_path:", config_env$stage_dir))
       stage_path <- config_env$stage_dir
-    } 
+    }
   }
-    
+
   tmp_config_file <- tempfile()
   tmp_err_file <- tempfile()
 
