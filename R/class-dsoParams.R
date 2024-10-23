@@ -109,3 +109,30 @@ setMethod(
     })
   }
 )
+
+
+#' @title reload function
+#' @description
+#'
+#' Generic for function reload
+#'
+#' @param object dsoParams config object
+#' @export
+setGeneric("reload", function(object,...) standardGeneric("reload"))
+
+
+#' @title reload dso params
+#' @description
+#' reloads the current dsoParams config into object
+#'
+#' @param object dsoParams object
+#' @export
+setMethod("reload", "dsoParams", function(object) {
+  if (!inherits(object, "dsoParams")) {
+    stop("The object is not of class 'dsoParams'")
+  }
+
+  object <<- read_params()
+
+  invisible(object)
+})

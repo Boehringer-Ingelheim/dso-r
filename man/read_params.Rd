@@ -4,10 +4,10 @@
 \alias{read_params}
 \title{read_params}
 \usage{
-read_params(stage_path, return_list = FALSE)
+read_params(stage_path = NULL, return_list = FALSE)
 }
 \arguments{
-\item{stage_path}{relative path to stage directory from project root}
+\item{stage_path}{relative path to stage directory from project root, when NULL, already set stage path will be taken from the config_environment}
 
 \item{return_list}{returns a list if TRUE, by default it return `dsoParams` class which is a list with secure access}
 }
