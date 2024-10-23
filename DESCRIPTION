@@ -1,7 +1,7 @@
 Package: dso
 Type: Package
 Title: dso R companion package
-Version: 0.4.5
+Version: 0.5.0
 Author: Daniel Schreyer<daniel.schreyer.ext@boehringer-ingelheim.com>,
     Gregor Sturm<gregor.sturm@boehringer-ingelheim.com>,
     Thomas Schwarzl<thomas.schwarzl@boehringer-ingelheim.com>
