@@ -2,7 +2,7 @@
 % Please edit documentation in R/class-dsoParams.R
 \name{reload,dsoParams-method}
 \alias{reload,dsoParams-method}
-\title{reloads the current dsoParams config into object}
+\title{reload dso params}
 \usage{
 \S4method{reload}{dsoParams}(object)
 }

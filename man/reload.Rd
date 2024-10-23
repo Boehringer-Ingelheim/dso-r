@@ -2,9 +2,12 @@
 % Please edit documentation in R/class-dsoParams.R
 \name{reload}
 \alias{reload}
-\title{Generic for function reload}
+\title{reload function}
 \usage{
 reload(object, ...)
+}
+\arguments{
+\item{object}{dsoParams config object}
 }
 \description{
 Generic for function reload

@@ -111,12 +111,20 @@ setMethod(
 )
 
 
+#' @title reload function
+#' @description
+#' 
 #' Generic for function reload
+#' 
+#' @param object dsoParams config object
 #' @export
 setGeneric("reload", function(object,...) standardGeneric("reload"))
 
 
-#' @title reloads the current dsoParams config into object
+#' @title reload dso params
+#' @description
+#' reloads the current dsoParams config into object
+#' 
 #' @param object dsoParams object
 #' @export
 setMethod("reload", "dsoParams", function(object) {
