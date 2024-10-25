@@ -5,12 +5,14 @@
 #'
 #' @return None
 #' @export
+#' @importFrom glue glue
+#' @importFrom rstudioapi viewer
 #' @examples
 #' \dontrun{
-#' dso_repro_addin()
+#' dso_repro_stage_addin()
 #' }
 #' @export
-dso_repro_addin <- function() {
+dso_repro_stage_addin <- function() {
   tryCatch({
     if (length(stage_here()) == 0) {
       stop("stage_here() is not defined. Please read in your config file using read_params().")

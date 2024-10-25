@@ -116,9 +116,8 @@ setMethod(
 #' Generic function for reloading configurations.
 #'
 #' @param object dsoParams config object
-#' @param ... Additional arguments passed to the method.
 #' @export
-setGeneric("reload", function(object,...) standardGeneric("reload"))
+setGeneric("reload", function(object) standardGeneric("reload"))
 
 
 #' @title reload dso params

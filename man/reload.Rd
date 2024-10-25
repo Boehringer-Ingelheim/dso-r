@@ -4,11 +4,11 @@
 \alias{reload}
 \title{reload function}
 \usage{
-reload(object, ...)
+reload(object)
 }
 \arguments{
 \item{object}{dsoParams config object}
 }
 \description{
-Generic for function reload
+Generic function for reloading configurations.
 }
