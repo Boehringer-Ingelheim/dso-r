@@ -1,0 +1,4 @@
+Name: dso repro stage
+Description: Execute dso repro and display the result in the viewer
+Binding: dso_repro_addin
+Interactive: false

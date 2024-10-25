@@ -1,7 +1,7 @@
 Package: dso
 Type: Package
 Title: dso R companion package
-Version: 0.5.0
+Version: 0.5.1
 Author: Daniel Schreyer<daniel.schreyer.ext@boehringer-ingelheim.com>,
     Gregor Sturm<gregor.sturm@boehringer-ingelheim.com>,
     Thomas Schwarzl<thomas.schwarzl@boehringer-ingelheim.com>
@@ -18,7 +18,8 @@ Imports:
     here,
     stringr,
     methods,
-    rlang
+    rlang,
+    rstudioapi (>= 0.11)
 RoxygenNote: 7.3.2
 Suggests:
     testthat (>= 3.0.0)
