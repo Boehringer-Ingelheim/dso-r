@@ -4,10 +4,12 @@
 \alias{reload,dsoParams-method}
 \title{reload dso params}
 \usage{
-\S4method{reload}{dsoParams}(object)
+\S4method{reload}{dsoParams}(object, env = caller_env())
 }
 \arguments{
 \item{object}{dsoParams object}
+
+\item{env}{environment in which object is located, caller_env() by default}
 }
 \description{
 reloads the current dsoParams config into object
