@@ -1,4 +1,14 @@
 #' Execute dso repro and display the result
+#'
+#' This function runs the `dso repro` command on the specified `dvc.yaml` file
+#' and displays the resulting report in the RStudio Viewer pane.
+#'
+#' @return None
+#' @export
+#' @examples
+#' \dontrun{
+#' dso_repro_addin()
+#' }
 #' @export
 dso_repro_addin <- function() {
   tryCatch({
