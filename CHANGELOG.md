@@ -8,8 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### New Features
 
--   Introduced the rstudio addin to `dso repro` the current stage
--   Introduced the rstudio addin to `dso repro` the current stage with dependencies
+-   Introduced the `repro` function that performs `dso repro` of a single stage with or without its dependencies
+-   Introduced the corresponding rstudio addins for the `repro` function
 
 ### Fixes
 

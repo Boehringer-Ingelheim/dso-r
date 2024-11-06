@@ -10,7 +10,7 @@ dso_repro_stage_addin()
 None
 }
 \description{
-This function runs the `dso repro` command on the specified `dvc.yaml` file
+This function reproduces the current stage without its dependencies
 and displays the resulting report in the RStudio Viewer pane.
 }
 \examples{
