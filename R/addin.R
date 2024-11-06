@@ -31,7 +31,7 @@ dso_repro_stage_addin <- function() {
       if (result != 0) {
         stop(glue::glue("DSO repro -s failed with status: {result}"))
       } else {
-          message("System command executed successfully")
+        message("System command executed successfully")
       }
 
       report_files <- list.files(stage_here("report"), pattern = "\\.pdf$|\\.html$", full.names = TRUE)
@@ -64,16 +64,16 @@ dso_repro_stage_w_dependencies_addin <- function() {
       dvc_yaml_path <- file.path(stage_path, "dvc.yaml")
 
       message(glue::glue("Reproducing the current stage with all its dependency stages."))
-      
+
       result <- system2(
         DSO_EXEC,
         c("repro", shQuote(dvc_yaml_path))
       )
-      
+
       if (result != 0) {
         stop(glue::glue("DSO repro -s failed with status: {result}"))
       } else {
-          message("System command executed successfully")
+        message("System command executed successfully")
       }
 
       report_files <- list.files(stage_here("report"), pattern = "\\.pdf$|\\.html$", full.names = TRUE)
