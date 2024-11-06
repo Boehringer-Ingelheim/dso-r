@@ -16,15 +16,14 @@ repro <- function(stage_path = stage_here(), single_stage = F) {
     message(glue::glue("Reproducing the current stage without dependencies."))
     repro_cmd <- "repro -s"
   }
-      result <- system2(
-        DSO_EXEC,
-        c(repro_cmd, shQuote(file.path(stage_path, "dvc.yaml")))
-      )
+  result <- system2(
+    DSO_EXEC,
+    c(repro_cmd, shQuote(file.path(stage_path, "dvc.yaml")))
+  )
 
-      if (result != 0) {
-        stop(glue::glue("DSO {repro_cmd} failed with status: {result}"))
-      } else {
-          message("dso repro was executed successfully")
-      }
+  if (result != 0) {
+    stop(glue::glue("DSO {repro_cmd} failed with status: {result}"))
+  } else {
+    message("dso repro was executed successfully")
+  }
 }
-
