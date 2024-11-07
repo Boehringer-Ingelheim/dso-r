@@ -109,32 +109,3 @@ setMethod(
     })
   }
 )
-
-
-#' @title reload function
-#' @description
-#'
-#' Generic for function reload
-#'
-#' @param object dsoParams config object
-#' @export
-setGeneric("reload", function(object, ...) standardGeneric("reload"))
-
-
-#' @title reload dso params
-#' @description
-#' reloads the current dsoParams config into object
-#'
-#' @param object dsoParams object
-#' @param env environment in which object is located, caller_env() by default
-#' @export
-setMethod("reload", "dsoParams", function(object, env = caller_env()) {
-  if (!inherits(object, "dsoParams")) {
-    stop("The object is not of class 'dsoParams'")
-  }
-
-  var_name <- deparse(substitute(object))
-  assign(var_name, value = read_params(), envir = env)
-
-  invisible(get(var_name, envir = env))
-})
