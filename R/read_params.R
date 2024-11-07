@@ -14,26 +14,26 @@
 #' @importFrom yaml read_yaml
 #' @export
 read_params <- function(stage_path = NULL, return_list = FALSE) {
-  if(!is.logical(return_list))
+  if (!is.logical(return_list)) {
     stop("Argument return_list needs to be logical.")
+  }
 
   # if stage_path argument was path, set stage from that argument
-  if(!is.null(stage_path)) {
-
+  if (!is.null(stage_path)) {
     # first check for input validity
-    if(!is.character(stage_path))
+    if (!is.character(stage_path)) {
       stop("stage_path argument must be a character string or NULL to reload the config")
+    }
 
     # then set stage path
     stage_path <- set_stage(stage_path)
-
   } else {
     # stage_path argument is null, therefore not set. Check if stage_dir
     # has been already set in config_env, if yes reload, if not, stop with error
-    if(is.null(config_env$stage_dir)) {
+    if (is.null(config_env$stage_dir)) {
       stop("stage_path argument missing.")
     } else {
-      cat(paste("reloading from already set stage_path:", config_env$stage_dir))
+      message(glue::glue("Reloading from already set stage_path: {config_env$stage_dir}"))
       stage_path <- config_env$stage_dir
     }
   }
@@ -41,30 +41,37 @@ read_params <- function(stage_path = NULL, return_list = FALSE) {
   tmp_config_file <- tempfile()
   tmp_err_file <- tempfile()
 
-  tryCatch({
-    output <- system2(DSO_EXEC,
-                      c("get-config",
-                        shQuote(stage_path)),
-                      stdout = tmp_config_file,
-                      stderr = tmp_err_file)
-
-    stderror <- readLines(tmp_err_file)
-
-    # error handling, display only rows after first error
-    # for better readability
-    if (output != 0 || any(grepl("ERROR", stderror))) {
-      stop(
-        paste("An error occurred when executing dso get-config:\n",
-              paste(
-                stderror[which(grepl("ERROR", stderror)) : length(stderror)],
-                collapse = "\n"
-              )
-        )
+  tryCatch(
+    {
+      output <- system2(DSO_EXEC,
+        c(
+          "get-config",
+          shQuote(stage_path)
+        ),
+        stdout = tmp_config_file,
+        stderr = tmp_err_file
       )
+
+      stderror <- readLines(tmp_err_file)
+
+      # error handling, display only rows after first error
+      # for better readability
+      if (output != 0 || any(grepl("ERROR", stderror))) {
+        stop(
+          paste(
+            "An error occurred when executing dso get-config:\n",
+            paste(
+              stderror[which(grepl("ERROR", stderror)):length(stderror)],
+              collapse = "\n"
+            )
+          )
+        )
+      }
+    },
+    error = function(e) {
+      stop("An error occurred when executing dso get-config: ", e$message)
     }
-  }, error = function(e) {
-    stop("An error occurred when executing dso get-config: ", e$message)
-  })
+  )
 
   yaml <- read_yaml(tmp_config_file)
   unlink(tmp_config_file)
