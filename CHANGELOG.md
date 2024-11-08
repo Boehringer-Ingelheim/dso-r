@@ -15,6 +15,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 -   Removed ... in reload function
 
+
+## v0.5.1
+
+### Improvements
+
+-   Fixed `reload()` function for dsoParams
+
 ## v0.5.0
 
 ### New Features
