@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v0.6
+
+### New Features
+
+-   Introduced the `repro` function that performs `dso repro` of a single stage with or without its dependencies
+-   Introduced the corresponding rstudio addins for the `repro` function
+
+### Fixes
+
+-   Removed `...` in reload function
+
+
 ## v0.5.1
 
 ### Improvements

@@ -1,0 +1,9 @@
+Name: dso repro stage
+Description: Execute dso repro -s
+Binding: dso_repro_stage_addin
+Interactive: false
+
+Name: dso repro stage with dependencies
+Description: Execute dso repro
+Binding: dso_repro_stage_w_dependencies_addin
+Interactive: false
