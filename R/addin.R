@@ -13,7 +13,6 @@
 #' }
 dso_repro_stage_addin <- function() {
   check_stage_here()
-  dvc_yaml_path <- stage_here("dvc.yaml")
 
   repro(stage_here(), single_stage = TRUE)
 

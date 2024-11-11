@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixes
 
--   Removed ... in reload function
+-   Removed `...` in reload function
 
 
 ## v0.5.1
