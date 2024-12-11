@@ -12,6 +12,7 @@
 #'
 #' @return parameters as list of list as `dsoParams` or conventional list when `return_list` is set.
 #' @importFrom yaml read_yaml
+#' @importFrom purrr modify_tree
 #' @export
 read_params <- function(stage_path = NULL, return_list = FALSE) {
   if (!is.logical(return_list)) {
@@ -73,7 +74,30 @@ read_params <- function(stage_path = NULL, return_list = FALSE) {
     }
   )
 
-  yaml <- read_yaml(tmp_config_file)
+  yaml <- read_yaml(tmp_config_file,
+    handlers = list(
+      "bool#yes" = \(x) {
+        attr(x, "yaml_bool") <- TRUE
+        x
+      },
+      "bool#no" = \(x) {
+        attr(x, "yaml_bool") <- FALSE
+        x
+      }
+    )
+  ) |>
+    purrr::modify_tree(leaf = \(x) {
+      if (is.character(x) && is.logical(attr(x, "yaml_bool"))) {
+        if (x %in% c("true", "false")) {
+          return(attr(x, "yaml_bool"))
+        } else {
+          attr(x, "yaml_bool") <- NULL
+          return(x)
+        }
+      } else {
+        return(x)
+      }
+    })
   unlink(tmp_config_file)
 
   if (return_list) {
