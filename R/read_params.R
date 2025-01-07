@@ -119,9 +119,15 @@ set_stage <- function(stage_path) {
 #' Get the absolute path to the current stage. The current stage can be set using set_stage()
 #' by providing the relative path of the stage from the project root directory.
 #' to the stage dir.
+#' Should an absolute path be provided to stage_here(), the path remains unchanged.
 #' @param ... additional parts of the path appended to the stage path using `file.path`
 #' @export
 #' @return absolute path to stage
 stage_here <- function(...) {
-  file.path(config_env$stage_dir, ...)
+  # do not change absolute paths
+  if (str_starts(file.path(...), "/")) {
+    file.path(...)
+  } else {
+    file.path(config_env$stage_dir, ...)
+  }
 }
