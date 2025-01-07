@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Backwards-incompatible changes
 
 -   `stage_here()` now treats absolute paths differently. While `stage_here` will continue to work
-    as usual for relative paths, absolute paths are now returned unchanged. 
+    as usual for relative paths, absolute paths are now returned unchanged.
 
 ## v0.6
 
