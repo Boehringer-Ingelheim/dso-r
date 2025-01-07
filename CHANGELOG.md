@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v0.7
+
+### Backwards-incompatible changes
+
+-   `stage_here()` now treats absolute paths differently. While `stage_here` will continue to work
+    as usual for relative paths, absolute paths are now returned unchanged. 
+
 ## v0.6
 
 ### New Features
