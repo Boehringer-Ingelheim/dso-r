@@ -19,6 +19,7 @@ Imports:
     stringr,
     methods,
     rlang,
+    fs,
     rstudioapi (>= 0.11)
 RoxygenNote: 7.3.2
 Suggests:

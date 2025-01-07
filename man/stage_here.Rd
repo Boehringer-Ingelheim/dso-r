@@ -19,4 +19,5 @@ get absolute path to stage
 Get the absolute path to the current stage. The current stage can be set using set_stage()
 by providing the relative path of the stage from the project root directory.
 to the stage dir.
+Should an absolute path be provided to stage_here(), the path remains unchanged.
 }
