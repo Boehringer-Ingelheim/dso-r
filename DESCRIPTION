@@ -9,7 +9,7 @@ Maintainer: Daniel Schreyer<daniel.schreyer.ext@boehringer-ingelheim.com>,
     Gregor Sturm<gregor.sturm@boehringer-ingelheim.com>,
     Thomas Schwarzl<thomas.schwarzl@boehringer-ingelheim.com>
 Description: Collection of functions used with the DevOps dso application.
-License: GPL-3 + file LICENSE
+License: LGPL-3.0-or-later + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
