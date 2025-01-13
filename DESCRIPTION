@@ -19,7 +19,8 @@ Imports:
     stringr,
     methods,
     rlang,
-    rstudioapi (>= 0.11)
+    rstudioapi (>= 0.11),
+    purrr
 RoxygenNote: 7.3.2
 Suggests:
     testthat (>= 3.0.0)

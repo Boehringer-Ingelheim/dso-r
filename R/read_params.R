@@ -11,8 +11,6 @@
 #' @param return_list returns a list if TRUE, by default it return `dsoParams` class which is a list with secure access
 #'
 #' @return parameters as list of list as `dsoParams` or conventional list when `return_list` is set.
-#' @importFrom yaml read_yaml
-#' @importFrom purrr modify_tree
 #' @export
 read_params <- function(stage_path = NULL, return_list = FALSE) {
   if (!is.logical(return_list)) {
@@ -74,30 +72,7 @@ read_params <- function(stage_path = NULL, return_list = FALSE) {
     }
   )
 
-  yaml <- read_yaml(tmp_config_file,
-    handlers = list(
-      "bool#yes" = \(x) {
-        attr(x, "yaml_bool") <- TRUE
-        x
-      },
-      "bool#no" = \(x) {
-        attr(x, "yaml_bool") <- FALSE
-        x
-      }
-    )
-  ) |>
-    purrr::modify_tree(leaf = \(x) {
-      if (is.character(x) && is.logical(attr(x, "yaml_bool"))) {
-        if (x %in% c("true", "false")) {
-          return(attr(x, "yaml_bool"))
-        } else {
-          attr(x, "yaml_bool") <- NULL
-          return(x)
-        }
-      } else {
-        return(x)
-      }
-    })
+  yaml <- read_clean_yaml(tmp_config_file)
   unlink(tmp_config_file)
 
   if (return_list) {
@@ -148,4 +123,39 @@ set_stage <- function(stage_path) {
 #' @return absolute path to stage
 stage_here <- function(...) {
   file.path(config_env$stage_dir, ...)
+}
+
+#' @title read_safe_yaml
+#' @description
+#' Safely reads in yaml files
+#' @export
+#' @return a list
+#' @importFrom yaml read_yaml
+#' @importFrom purrr modify_tree
+#' @export
+read_safe_yaml <- function(params_file) {
+  yaml <- read_yaml(params_file,
+    handlers = list(
+      "bool#yes" = \(x) {
+        attr(x, "yaml_bool") <- TRUE
+        x
+      },
+      "bool#no" = \(x) {
+        attr(x, "yaml_bool") <- FALSE
+        x
+      }
+    )
+  ) |>
+    purrr::modify_tree(leaf = \(x) {
+      if (is.character(x) && is.logical(attr(x, "yaml_bool"))) {
+        if (x %in% c("true", "false")) {
+          return(attr(x, "yaml_bool"))
+        } else {
+          attr(x, "yaml_bool") <- NULL
+          return(x)
+        }
+      } else {
+        return(x)
+      }
+    })
 }
