@@ -72,7 +72,7 @@ read_params <- function(stage_path = NULL, return_list = FALSE) {
     }
   )
 
-  yaml <- read_clean_yaml(tmp_config_file)
+  yaml <- read_safe_yaml(tmp_config_file)
   unlink(tmp_config_file)
 
   if (return_list) {
@@ -132,7 +132,6 @@ stage_here <- function(...) {
 #' @return a list
 #' @importFrom yaml read_yaml
 #' @importFrom purrr modify_tree
-#' @export
 read_safe_yaml <- function(params_file) {
   yaml <- read_yaml(params_file,
     handlers = list(
