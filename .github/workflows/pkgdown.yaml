@@ -1,4 +1,4 @@
-name: "Build docs using sphinx"
+name: "Build docs using pkgdown"
 on:
   push:
     branches:
