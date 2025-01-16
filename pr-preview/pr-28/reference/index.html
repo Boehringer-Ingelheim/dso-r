@@ -30,9 +30,9 @@
     </div>
 
     <div class="section level2">
-      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
+      <h2 id="work-with-dso-stages">Work with DSO stages<a class="anchor" aria-label="anchor" href="#work-with-dso-stages"></a></h2>
 
-
+      <div class="section-desc"><p>Functions to load stage params and manipulate paths</p></div>
 
 
     </div><div class="section level2">
@@ -41,6 +41,47 @@
 
 
       <dl><dt>
+
+          <code><a href="read_params.html">read_params()</a></code>
+
+        </dt>
+        <dd>read_params</dd>
+      </dl><dl><dt>
+
+          <code><a href="set_stage.html">set_stage()</a></code>
+
+        </dt>
+        <dd>set_stage</dd>
+      </dl><dl><dt>
+
+          <code><a href="stage_here.html">stage_here()</a></code>
+
+        </dt>
+        <dd>stage_here</dd>
+      </dl><dl><dt>
+
+          <code><a href="reload.html">reload()</a></code>
+
+        </dt>
+        <dd>Reload dsoParams</dd>
+      </dl></div><div class="section level2">
+      <h2 id="dsoparams-class-reference">dsoParams class reference<a class="anchor" aria-label="anchor" href="#dsoparams-class-reference"></a></h2>
+
+      <div class="section-desc"><p>Reference of the dsoParams class produced by read_params</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="dsoParams.html">dsoParams()</a></code>
+
+        </dt>
+        <dd>dsoParams: list with safe access</dd>
+      </dl><dl><dt>
 
           <code><a href="as.list-dsoParams-method.html">as.list(<i>&lt;dsoParams&gt;</i>)</a></code>
 
@@ -54,11 +95,40 @@
         <dd>overriding the the $ operator to add secure list calling so that it cannot return NULL when call does not exist</dd>
       </dl><dl><dt>
 
-          <code><a href="compile_config.html">compile_config()</a></code>
+          <code><a href="dsoParams-class.html">dsoParams-class</a></code>
 
         </dt>
-        <dd>compile_config</dd>
+        <dd>dsoParams class</dd>
       </dl><dl><dt>
+
+          <code><a href="print.dsoParams.html">print(<i>&lt;dsoParams&gt;</i>)</a></code>
+
+        </dt>
+        <dd>Custom print method for dsoParams class</dd>
+      </dl><dl><dt>
+
+          <code><a href="show-dsoParams-method.html">show(<i>&lt;dsoParams&gt;</i>)</a></code>
+
+        </dt>
+        <dd>Custom show method for dsoParams class</dd>
+      </dl><dl><dt>
+
+          <code><a href="sub-sub-.dsoParams.html">`[[`(<i>&lt;dsoParams&gt;</i>)</a></code>
+
+        </dt>
+        <dd>And the [[ operator: to add secure list calling so that it cannot return NULL when call does not exist</dd>
+      </dl></div><div class="section level2">
+      <h2 id="r-interface-to-dso-cli">R interface to DSO CLI<a class="anchor" aria-label="anchor" href="#r-interface-to-dso-cli"></a></h2>
+
+      <div class="section-desc"><p>wrapper around the DSO command line interface</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
 
           <code><a href="create_stage.html">create_stage()</a></code>
 
@@ -66,17 +136,34 @@
         <dd>create_stage</dd>
       </dl><dl><dt>
 
-          <code><a href="dsoParams-class.html">dsoParams-class</a></code>
+          <code><a href="compile_config.html">compile_config()</a></code>
 
         </dt>
-        <dd>dsoParams class</dd>
+        <dd>compile_config</dd>
       </dl><dl><dt>
 
-          <code><a href="dsoParams.html">dsoParams()</a></code>
+          <code><a href="init.html">init()</a></code>
 
         </dt>
-        <dd>dsoParams: list with safe access</dd>
+        <dd>init</dd>
       </dl><dl><dt>
+
+          <code><a href="repro.html">repro()</a></code>
+
+        </dt>
+        <dd>Reproduce a dso stage</dd>
+      </dl></div><div class="section level2">
+      <h2 id="rstudio-addin">Rstudio addin<a class="anchor" aria-label="anchor" href="#rstudio-addin"></a></h2>
+
+      <div class="section-desc"><p>functions related to the DSO rstudio addin</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
 
           <code><a href="dso_repro_stage_addin.html">dso_repro_stage_addin()</a></code>
 
@@ -88,66 +175,13 @@
 
         </dt>
         <dd>Execute dso repro with dependencies and display the result</dd>
-      </dl><dl><dt>
-
-          <code><a href="init.html">init()</a></code>
-
-        </dt>
-        <dd>init</dd>
-      </dl><dl><dt>
-
-          <code><a href="print.dsoParams.html">print(<i>&lt;dsoParams&gt;</i>)</a></code>
-
-        </dt>
-        <dd>Custom print method for dsoParams class</dd>
-      </dl><dl><dt>
-
-          <code><a href="read_params.html">read_params()</a></code>
-
-        </dt>
-        <dd>read_params</dd>
-      </dl><dl><dt>
-
-          <code><a href="reload.html">reload()</a></code>
-
-        </dt>
-        <dd>Reload dsoParams</dd>
-      </dl><dl><dt>
-
-          <code><a href="repro.html">repro()</a></code>
-
-        </dt>
-        <dd>Reproduce a dso stage</dd>
-      </dl><dl><dt>
-
-          <code><a href="set_stage.html">set_stage()</a></code>
-
-        </dt>
-        <dd>set_stage</dd>
-      </dl><dl><dt>
-
-          <code><a href="show-dsoParams-method.html">show(<i>&lt;dsoParams&gt;</i>)</a></code>
-
-        </dt>
-        <dd>Custom show method for dsoParams class</dd>
-      </dl><dl><dt>
-
-          <code><a href="stage_here.html">stage_here()</a></code>
-
-        </dt>
-        <dd>stage_here</dd>
-      </dl><dl><dt>
-
-          <code><a href="sub-sub-.dsoParams.html">`[[`(<i>&lt;dsoParams&gt;</i>)</a></code>
-
-        </dt>
-        <dd>And the [[ operator: to add secure list calling so that it cannot return NULL when call does not exist</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Daniel Schreyer.</p>
+  <p>Developed by Daniel Schreyer, Gregor Sturm, Thomas Schwarzl, Alexander Peltzer.</p>
 </div>
 
 <div class="pkgdown-footer-right">
