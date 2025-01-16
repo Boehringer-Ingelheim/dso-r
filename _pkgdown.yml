@@ -20,7 +20,7 @@ reference:
       - print.dsoParams
       - show,dsoParams-method
       - "[[.dsoParams"
-    
+
   - title: R interface to DSO CLI
     desc: wrapper around the DSO command line interface
     contents:
@@ -34,5 +34,3 @@ reference:
     contents:
       - dso_repro_stage_addin
       - dso_repro_stage_w_dependencies_addin
-
-
