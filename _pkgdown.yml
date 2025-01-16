@@ -1,4 +1,38 @@
 url: ~
 template:
   bootstrap: 5
+reference:
+  - title: Work with DSO stages
+    desc: Functions to load stage params and manipulate paths
+    contents:
+      - read_params
+      - set_stage
+      - stage_here
+      - reload
+
+  - title: dsoParams class reference
+    desc: Reference of the dsoParams class produced by read_params
+    contents:
+      - dsoParams
+      - as.list,dsoParams-method
+      - $.dsoParams
+      - dsoParams-class
+      - print.dsoParams
+      - show,dsoParams-method
+      - "[[.dsoParams"
+    
+  - title: R interface to DSO CLI
+    desc: wrapper around the DSO command line interface
+    contents:
+      - create_stage
+      - compile_config
+      - init
+      - repro
+
+  - title: Rstudio addin
+    desc: functions related to the DSO rstudio addin
+    contents:
+      - dso_repro_stage_addin
+      - dso_repro_stage_w_dependencies_addin
+
 
