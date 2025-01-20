@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 -   Remove `safe_get`, because the `dsoParams` class already checks for existance of keys
 
+### Fixes
+
+-   Improved the read_params function by enforcing the params.yaml to be read as is. "Yes", "No" will not be converted to booleans anymore. Related to issue #22
+
 ## v0.6
 
 ### New Features
