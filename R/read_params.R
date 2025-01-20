@@ -128,7 +128,6 @@ stage_here <- function(...) {
 #' @title read_safe_yaml
 #' @description
 #' Safely reads in yaml files
-#' @export
 #' @return a list
 #' @importFrom yaml read_yaml
 #' @importFrom purrr modify_tree
