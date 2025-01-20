@@ -40,6 +40,10 @@
 <h3 id="backwards-incompatible-changes">Backwards-incompatible changes<a class="anchor" aria-label="anchor" href="#backwards-incompatible-changes"></a></h3>
 <ul><li>Remove <code>safe_get</code>, because the <code>dsoParams</code> class already checks for existance of keys</li>
 </ul></div>
+<div class="section level3">
+<h3 id="fixes">Fixes<a class="anchor" aria-label="anchor" href="#fixes"></a></h3>
+<ul><li>Improved the read_params function by enforcing the params.yaml to be read as is. “Yes”, “No” will not be converted to booleans anymore. Related to issue #22</li>
+</ul></div>
 </div>
 <div class="section level2">
 <h2 id="v06">v0.6<a class="anchor" aria-label="anchor" href="#v06"></a></h2>
@@ -49,7 +53,7 @@
 <li>Introduced the corresponding rstudio addins for the <code>repro</code> function</li>
 </ul></div>
 <div class="section level3">
-<h3 id="fixes">Fixes<a class="anchor" aria-label="anchor" href="#fixes"></a></h3>
+<h3 id="fixes-1">Fixes<a class="anchor" aria-label="anchor" href="#fixes-1"></a></h3>
 <ul><li>Removed <code>...</code> in reload function</li>
 </ul></div>
 </div>
