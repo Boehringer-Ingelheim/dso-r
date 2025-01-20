@@ -2,7 +2,7 @@
 # R specific hooks: https://github.com/lorenzwalthert/precommit
 repos:
   - repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.3
+    rev: v0.4.3.9003
     hooks:
       - id: style-files
         args: [--style_pkg=styler, --style_fun=tidyverse_style, --scope=tokens]
@@ -12,8 +12,10 @@ repos:
       - id: deps-in-desc
         args: [--allow_private_imports]
       - id: roxygenize
+        # workaround https://github.com/lorenzwalthert/precommit/issues/609
+        additional_dependencies: ["rstudioapi"]
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
       - id: end-of-file-fixer
         exclude: '\.Rd'
@@ -27,7 +29,7 @@ repos:
       - id: check-merge-conflict
         args: [--assume-in-merge]
   - repo: https://github.com/pre-commit-ci/pre-commit-ci-config
-    rev: v1.5.1
+    rev: v1.6.1
     hooks:
       # Only reuiqred when https://pre-commit.ci is used for config validation
       - id: check-pre-commit-ci-config

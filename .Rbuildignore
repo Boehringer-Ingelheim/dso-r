@@ -5,3 +5,4 @@
 ^\.pre-commit-config\.yaml$
 ^\.github$
 ^CHANGELOG\.md$
+^LICENSE\.md$
