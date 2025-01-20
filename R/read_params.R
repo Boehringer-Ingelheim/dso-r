@@ -127,11 +127,13 @@ stage_here <- function(...) {
 
 #' @title read_safe_yaml
 #' @description
-#' Safely reads in yaml files
-#' @export
+#' Read in YAML files while not interpolating yes/no and Y/N.
+#' This is necessary because there's no YAML 1.2-compliant parser in R yet.
+#' @param params_file path to yaml file
 #' @return a list
 #' @importFrom yaml read_yaml
 #' @importFrom purrr modify_tree
+#' @keywords internal
 read_safe_yaml <- function(params_file) {
   yaml <- read_yaml(params_file,
     handlers = list(
