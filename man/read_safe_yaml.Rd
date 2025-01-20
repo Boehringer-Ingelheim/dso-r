@@ -6,9 +6,13 @@
 \usage{
 read_safe_yaml(params_file)
 }
+\arguments{
+\item{params_file}{path to yaml file}
+}
 \value{
 a list
 }
 \description{
-Safely reads in yaml files
+Read in YAML files while not interpolating yes/no and Y/N.
+This is necessary because there's no YAML 1.2-compliant parser in R yet.
 }
