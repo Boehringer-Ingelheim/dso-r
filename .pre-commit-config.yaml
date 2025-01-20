@@ -13,7 +13,7 @@ repos:
         args: [--allow_private_imports]
       - id: roxygenize
         # workaround https://github.com/lorenzwalthert/precommit/issues/609
-        additional_dependencies: ["rstudioapi"]
+        additional_dependencies: ["rstudioapi", "rlang", "methods", "stringr", "here", "glue", "yaml"]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
