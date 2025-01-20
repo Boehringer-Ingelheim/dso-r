@@ -57,6 +57,3 @@ create_stage(name = "subfolder/my_stage", description = "This stage does somethi
 ## API documentation
 
 Please refer to the [documentation website](https://boehringer-ingelheim.github.io/dso-r/reference/index.html)
-
-
-
