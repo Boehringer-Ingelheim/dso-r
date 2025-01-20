@@ -6,9 +6,6 @@
 \usage{
 read_safe_yaml(params_file)
 }
-\arguments{
-\item{params_file}{path to params.yaml file}
-}
 \value{
 a list
 }
