@@ -27,13 +27,18 @@ jobs:
         with:
           use-public-rspm: true
 
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5
+
       - name: Install dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::roxygen2
           needs: roxygen2
 
-      - uses: pre-commit/action@v2.0.3
+      # run this without pre-commit/action because of constant cache issues with the R actions
+      - name: run pre-commit
+        run: uv tool run pre-commit run --show-diff-on-failure --color=always --all-files
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         if: '!cancelled()'
