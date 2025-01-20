@@ -16,3 +16,4 @@ a list
 Read in YAML files while not interpolating yes/no and Y/N.
 This is necessary because there's no YAML 1.2-compliant parser in R yet.
 }
+\keyword{internal}

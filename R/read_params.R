@@ -133,6 +133,7 @@ stage_here <- function(...) {
 #' @return a list
 #' @importFrom yaml read_yaml
 #' @importFrom purrr modify_tree
+#' @keywords internal
 read_safe_yaml <- function(params_file) {
   yaml <- read_yaml(params_file,
     handlers = list(
