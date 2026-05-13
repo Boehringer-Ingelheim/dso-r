@@ -127,36 +127,11 @@ stage_here <- function(...) {
 
 #' @title read_safe_yaml
 #' @description
-#' Read in YAML files while not interpolating yes/no and Y/N.
-#' This is necessary because there's no YAML 1.2-compliant parser in R yet.
+#' Read in YAML 1.2 files using a compliant parser.
 #' @param params_file path to yaml file
 #' @return a list
-#' @importFrom yaml read_yaml
-#' @importFrom purrr modify_tree
+#' @importFrom yaml12 read_yaml
 #' @keywords internal
 read_safe_yaml <- function(params_file) {
-  yaml <- read_yaml(params_file,
-    handlers = list(
-      "bool#yes" = \(x) {
-        attr(x, "yaml_bool") <- TRUE
-        x
-      },
-      "bool#no" = \(x) {
-        attr(x, "yaml_bool") <- FALSE
-        x
-      }
-    )
-  ) |>
-    purrr::modify_tree(leaf = \(x) {
-      if (is.character(x) && is.logical(attr(x, "yaml_bool"))) {
-        if (x %in% c("true", "false")) {
-          return(attr(x, "yaml_bool"))
-        } else {
-          attr(x, "yaml_bool") <- NULL
-          return(x)
-        }
-      } else {
-        return(x)
-      }
-    })
+  yaml12::read_yaml(params_file)
 }

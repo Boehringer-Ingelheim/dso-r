@@ -13,14 +13,13 @@ License: LGPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Imports:
-    yaml,
+    yaml12,
     glue,
     here,
     stringr,
     methods,
     rlang,
-    rstudioapi (>= 0.11),
-    purrr
+    rstudioapi (>= 0.11)
 RoxygenNote: 7.3.2
 Suggests:
     testthat (>= 3.0.0)
