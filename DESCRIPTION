@@ -16,9 +16,7 @@ Imports:
     yaml12,
     glue,
     here,
-    stringr,
     methods,
-    rlang,
     rstudioapi (>= 0.11)
 RoxygenNote: 7.3.2
 Suggests:
