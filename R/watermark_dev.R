@@ -56,8 +56,7 @@ watermark_dev <- function(dev) {
 
     # Add a task callback that checks if the device has been closed
     # and applies the watermark when it is
-    callback_id <- NULL
-    callback_id <- addTaskCallback(function(...) {
+    addTaskCallback(function(...) {
       # Check if the device is still open
       if (!(dev_num %in% grDevices::dev.list())) {
         # Device has been closed, apply watermark

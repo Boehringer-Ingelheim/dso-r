@@ -55,19 +55,16 @@ test_that(".get_watermark_config returns NULL when dso config has no watermark",
   rm("dso", envir = dso:::config_env)
 })
 
-test_that("read_params stores dso config in config_env", {
-  # This test verifies the integration point - that read_params stores dso config
-
-  # We can't easily test read_params without a real dso setup, so we verify
-  # the config_env mechanism works
+test_that("config_env stores and clears dso config correctly", {
+  # Verify storing dso config
   assign("dso", list(quarto = list(watermark = list(text = "TEST"))),
     envir = dso:::config_env
   )
-
   expect_equal(dso:::config_env$dso$quarto$watermark$text, "TEST")
 
-  # Clean up
+  # Verify it can be removed (as read_params does when yaml$dso is NULL)
   rm("dso", envir = dso:::config_env)
+  expect_null(dso:::config_env$dso)
 })
 
 test_that(".apply_watermark falls back to copy on failure", {
