@@ -11,6 +11,7 @@
 #' @param return_list returns a list if TRUE, by default it return `dsoParams` class which is a list with secure access
 #'
 #' @return parameters as list of list as `dsoParams` or conventional list when `return_list` is set.
+#' @importFrom yaml12 read_yaml
 #' @export
 read_params <- function(stage_path = NULL, return_list = FALSE) {
   if (!is.logical(return_list)) {
@@ -72,7 +73,7 @@ read_params <- function(stage_path = NULL, return_list = FALSE) {
     }
   )
 
-  yaml <- read_safe_yaml(tmp_config_file)
+  yaml <- yaml12::read_yaml(tmp_config_file)
   unlink(tmp_config_file)
 
   if (return_list) {
@@ -123,15 +124,4 @@ set_stage <- function(stage_path) {
 #' @return absolute path to stage
 stage_here <- function(...) {
   file.path(config_env$stage_dir, ...)
-}
-
-#' @title read_safe_yaml
-#' @description
-#' Read in YAML 1.2 files using a compliant parser.
-#' @param params_file path to yaml file
-#' @return a list
-#' @importFrom yaml12 read_yaml
-#' @keywords internal
-read_safe_yaml <- function(params_file) {
-  yaml12::read_yaml(params_file)
 }

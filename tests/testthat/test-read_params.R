@@ -14,8 +14,8 @@ test_that("read_params: yes and no parameters are correctly loaded", {
     temp_file
   )
 
-  ### Load temp params.yaml using read_safe_yaml (yaml12-based)
-  safe_yaml <- read_safe_yaml(temp_file)
+  ### Load temp params.yaml using yaml12
+  safe_yaml <- yaml12::read_yaml(temp_file)
 
   file.remove(temp_file)
 
