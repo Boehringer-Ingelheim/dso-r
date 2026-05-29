@@ -75,6 +75,11 @@ read_params <- function(stage_path = NULL, return_list = FALSE) {
   yaml <- read_safe_yaml(tmp_config_file)
   unlink(tmp_config_file)
 
+  # Store dso config in the global config environment for use by watermark_dev
+  if (!is.null(yaml$dso)) {
+    assign("dso", yaml$dso, envir = config_env)
+  }
+
   if (return_list) {
     yaml
   } else {
