@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## v0.8
 
-### Backwards-incompatible changes
+### Changed
 
 -   Replaced `yaml` and `purrr` dependencies with `yaml12` for proper YAML 1.2 compliant parsing. `yes`/`no`/`Y`/`N` are now correctly treated as strings (not booleans) without any workaround.
 
