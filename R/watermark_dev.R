@@ -112,12 +112,9 @@ watermark_dev <- function(dev) {
   status <- attr(result, "status")
 
   if (!is.null(status) && status != 0) {
-    warning(
+    stop(
       "dso watermark failed with status ", status, ".\n",
-      "Output: ", paste(result, collapse = "\n"), "\n",
-      "The unwatermarked image will be used instead."
+      "Output: ", paste(result, collapse = "\n")
     )
-    # Fall back to copying the unwatermarked file
-    file.copy(input_file, output_file, overwrite = TRUE)
   }
 }
