@@ -42,7 +42,19 @@ test_that("with_watermark uses temp file when config is set", {
 })
 
 test_that("with_watermark works without config when overrides are passed", {
-  skip_if_not(capabilities("cairo"), "SVG device requires Cairo support")
+  # svg() requires Cairo runtime libs which may be absent on macOS CI
+  tmp_svg <- tempfile(fileext = ".svg")
+  svg_works <- tryCatch(
+    {
+      suppressWarnings(grDevices::svg(tmp_svg))
+      plot.new()
+      grDevices::dev.off()
+      file.exists(tmp_svg) && file.size(tmp_svg) > 0
+    },
+    error = function(e) FALSE
+  )
+  unlink(tmp_svg)
+  skip_if_not(svg_works, "SVG device not functional (missing Cairo/X11 runtime libraries)")
 
   if (exists("dso", envir = dso:::config_env)) {
     rm("dso", envir = dso:::config_env)
@@ -62,7 +74,18 @@ test_that("with_watermark works without config when overrides are passed", {
 })
 
 test_that("with_watermark embeds watermark text in SVG output", {
-  skip_if_not(capabilities("cairo"), "SVG device requires Cairo support")
+  tmp_svg <- tempfile(fileext = ".svg")
+  svg_works <- tryCatch(
+    {
+      suppressWarnings(grDevices::svg(tmp_svg))
+      plot.new()
+      grDevices::dev.off()
+      file.exists(tmp_svg) && file.size(tmp_svg) > 0
+    },
+    error = function(e) FALSE
+  )
+  unlink(tmp_svg)
+  skip_if_not(svg_works, "SVG device not functional (missing Cairo/X11 runtime libraries)")
 
   assign("dso",
     list(quarto = list(watermark = list(text = "TOPSECRET_MARKER"))),
