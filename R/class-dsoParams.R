@@ -77,7 +77,7 @@ dsoParams <- function(x = list()) {
 #' @param ... additional parameters are ignored
 #' @export
 print.dsoParams <- function(x, ...) {
-  cat(yaml::as.yaml(x))
+  cat(yaml12::format_yaml(x))
 }
 
 #' Custom show method for dsoParams class
@@ -88,7 +88,7 @@ setMethod(
   f = "show",
   signature = "dsoParams",
   definition = function(object) {
-    cat(yaml::as.yaml(object))
+    cat(yaml12::format_yaml(object))
   }
 )
 

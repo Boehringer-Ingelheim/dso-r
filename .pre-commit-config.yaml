@@ -2,7 +2,7 @@
 # R specific hooks: https://github.com/lorenzwalthert/precommit
 repos:
   - repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.3.9003
+    rev: v0.4.3.9023
     hooks:
       - id: style-files
         args: [--style_pkg=styler, --style_fun=tidyverse_style, --scope=tokens]
@@ -13,9 +13,10 @@ repos:
         args: [--allow_private_imports]
       - id: roxygenize
         # workaround https://github.com/lorenzwalthert/precommit/issues/609
-        additional_dependencies: ["rstudioapi", "rlang", "methods", "stringr", "here", "glue", "yaml"]
+        additional_dependencies:
+          ["rstudioapi", "rlang", "methods", "here", "glue", "yaml12"]
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: end-of-file-fixer
         exclude: '\.Rd'
