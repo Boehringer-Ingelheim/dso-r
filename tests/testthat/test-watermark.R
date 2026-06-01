@@ -1,5 +1,4 @@
 skip_if_svg_unsupported <- function() {
-
   tmp_svg <- tempfile(fileext = ".svg")
   on.exit(unlink(tmp_svg), add = TRUE)
   svg_works <- tryCatch(
