@@ -28,6 +28,7 @@ reference:
       - compile_config
       - init
       - repro
+      - with_watermark
 
   - title: Rstudio addin
     desc: functions related to the DSO rstudio addin
