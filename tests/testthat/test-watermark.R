@@ -42,6 +42,8 @@ test_that("with_watermark uses temp file when config is set", {
 })
 
 test_that("with_watermark works without config when overrides are passed", {
+  skip_if_not(capabilities("cairo"), "SVG device requires Cairo support")
+
   if (exists("dso", envir = dso:::config_env)) {
     rm("dso", envir = dso:::config_env)
   }
@@ -60,6 +62,8 @@ test_that("with_watermark works without config when overrides are passed", {
 })
 
 test_that("with_watermark embeds watermark text in SVG output", {
+  skip_if_not(capabilities("cairo"), "SVG device requires Cairo support")
+
   assign("dso",
     list(quarto = list(watermark = list(text = "TOPSECRET_MARKER"))),
     envir = dso:::config_env
