@@ -4,7 +4,7 @@
 \alias{reload}
 \title{Reload dsoParams}
 \usage{
-reload(params, env = caller_env())
+reload(params, env = rlang::caller_env())
 }
 \arguments{
 \item{params}{dsoParams object}
