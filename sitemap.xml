@@ -8,6 +8,8 @@
 <url><loc>/reference/cash-.dsoParams.html</loc></url>
 <url><loc>/reference/compile_config.html</loc></url>
 <url><loc>/reference/create_stage.html</loc></url>
+<url><loc>/reference/dot-apply_watermark.html</loc></url>
+<url><loc>/reference/dot-get_watermark_config.html</loc></url>
 <url><loc>/reference/dsoParams-class.html</loc></url>
 <url><loc>/reference/dsoParams.html</loc></url>
 <url><loc>/reference/dso_repro_stage_addin.html</loc></url>
@@ -22,5 +24,6 @@
 <url><loc>/reference/show-dsoParams-method.html</loc></url>
 <url><loc>/reference/stage_here.html</loc></url>
 <url><loc>/reference/sub-sub-.dsoParams.html</loc></url>
+<url><loc>/reference/with_watermark.html</loc></url>
 </urlset>
 

@@ -37,6 +37,12 @@
 <div class="section level2">
 <h2 id="v08">v0.8<a class="anchor" aria-label="anchor" href="#v08"></a></h2>
 <div class="section level3">
+<h3 id="new-features">New Features<a class="anchor" aria-label="anchor" href="#new-features"></a></h3>
+<ul><li>Added <code>with_watermark(output_file, fun, ...)</code> — a callback-style wrapper that applies a watermark to plot output via the <code>dso watermark</code> CLI. Mirrors the Python <code>dso.WatermarkedFile</code> context manager. Supports SVG, PDF and all pixel formats supported by <code>dso watermark</code>. When no watermark is configured (and no overrides are passed), the callback is invoked with <code>output_file</code> directly with zero overhead.</li>
+<li>
+<code><a href="reference/read_params.html">read_params()</a></code> now stores the <code>dso</code> section of the params in the global config env, making it accessible to <code><a href="reference/with_watermark.html">with_watermark()</a></code> (mirroring Python’s <code>CONFIG.dso_config</code>).</li>
+</ul></div>
+<div class="section level3">
 <h3 id="changed">Changed<a class="anchor" aria-label="anchor" href="#changed"></a></h3>
 <ul><li>Replaced <code>yaml</code> and <code>purrr</code> dependencies with <code>yaml12</code> for proper YAML 1.2 compliant parsing. <code>yes</code>/<code>no</code>/<code>Y</code>/<code>N</code> are now correctly treated as strings (not booleans) without any workaround.</li>
 </ul></div>
@@ -55,7 +61,7 @@
 <div class="section level2">
 <h2 id="v06">v0.6<a class="anchor" aria-label="anchor" href="#v06"></a></h2>
 <div class="section level3">
-<h3 id="new-features">New Features<a class="anchor" aria-label="anchor" href="#new-features"></a></h3>
+<h3 id="new-features-1">New Features<a class="anchor" aria-label="anchor" href="#new-features-1"></a></h3>
 <ul><li>Introduced the <code>repro</code> function that performs <code>dso repro</code> of a single stage with or without its dependencies</li>
 <li>Introduced the corresponding rstudio addins for the <code>repro</code> function</li>
 </ul></div>
@@ -74,7 +80,7 @@
 <div class="section level2">
 <h2 id="v050">v0.5.0<a class="anchor" aria-label="anchor" href="#v050"></a></h2>
 <div class="section level3">
-<h3 id="new-features-1">New Features<a class="anchor" aria-label="anchor" href="#new-features-1"></a></h3>
+<h3 id="new-features-2">New Features<a class="anchor" aria-label="anchor" href="#new-features-2"></a></h3>
 <ul><li>Introduced <code><a href="reference/reload.html">reload()</a></code> function for dsoParams</li>
 </ul></div>
 </div>
@@ -115,7 +121,7 @@
 <div class="section level2">
 <h2 id="v040">v0.4.0<a class="anchor" aria-label="anchor" href="#v040"></a></h2>
 <div class="section level3">
-<h3 id="new-features-2">New Features<a class="anchor" aria-label="anchor" href="#new-features-2"></a></h3>
+<h3 id="new-features-3">New Features<a class="anchor" aria-label="anchor" href="#new-features-3"></a></h3>
 <ul><li>Introduction of <code>dsoParams</code> class which is automatically returned from <code><a href="reference/read_params.html">read_params()</a></code> . This list of list type prohibits return of <code>NULL</code> when there is incorrect access, making the use of parameters much safer and stable.</li>
 <li>Added <code>testthat</code> testing</li>
 <li>Modified <code><a href="reference/read_params.html">read_params()</a></code> so that the default return value is <code>dsoParams</code> object, and added an argument that a standard list of lists can be returned.</li>
@@ -124,7 +130,7 @@
 <div class="section level2">
 <h2 id="v031">v0.3.1<a class="anchor" aria-label="anchor" href="#v031"></a></h2>
 <div class="section level3">
-<h3 id="new-features-3">New Features<a class="anchor" aria-label="anchor" href="#new-features-3"></a></h3>
+<h3 id="new-features-4">New Features<a class="anchor" aria-label="anchor" href="#new-features-4"></a></h3>
 <ul><li>Added <code>safe_get</code> function to safely retrieve configuration from list of list calls.</li>
 <li>Added testing with testthat</li>
 </ul></div>

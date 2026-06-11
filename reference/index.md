@@ -36,6 +36,7 @@ wrapper around the DSO command line interface
 - [`compile_config()`](compile_config.md) : compile_config
 - [`init()`](init.md) : init
 - [`repro()`](repro.md) : Reproduce a dso stage
+- [`with_watermark()`](with_watermark.md) : with_watermark
 
 ## Rstudio addin
 

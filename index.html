@@ -77,6 +77,28 @@
 <p>Creating a stage within the R environment can be performed using <a href="https://boehringer-ingelheim.github.io/dso-r/reference/create_stage.html" class="external-link"><code>create_stage</code></a> and supplying it with the relative path of the stage from project root and a description.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/create_stage.html">create_stage</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"subfolder/my_stage"</span>, description <span class="op">=</span> <span class="st">"This stage does something"</span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="watermarking-plot-output">Watermarking plot output<a class="anchor" aria-label="anchor" href="#watermarking-plot-output"></a>
+</h3>
+<p>If a <code>quarto.watermark</code> section is defined in the project configuration, <a href="https://boehringer-ingelheim.github.io/dso-r/reference/with_watermark.html" class="external-link"><code>with_watermark</code></a> applies it to any plot file. This mirrors the Python <code>dso.WatermarkedFile</code> context manager: the callback receives a temporary path to write to, and the watermark is added via the <code>dso watermark</code> CLI once the callback returns. When no watermark is configured (and no overrides are passed), the callback is invoked with <code>output_file</code> directly without any extra work.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Base graphics</span></span>
+<span><span class="fu"><a href="reference/with_watermark.html">with_watermark</a></span><span class="op">(</span><span class="fu"><a href="reference/stage_here.html">stage_here</a></span><span class="op">(</span><span class="st">"output/plot.png"</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">f</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/grDevices/png.html" class="external-link">png</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">dev.off</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># ggplot2</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">aes</span><span class="op">(</span><span class="va">mpg</span>, <span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/with_watermark.html">with_watermark</a></span><span class="op">(</span><span class="fu"><a href="reference/stage_here.html">stage_here</a></span><span class="op">(</span><span class="st">"output/plot.pdf"</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">f</span><span class="op">)</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">ggsave</span><span class="op">(</span><span class="va">f</span>, <span class="va">p</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Override config on a per-call basis</span></span>
+<span><span class="fu"><a href="reference/with_watermark.html">with_watermark</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="reference/stage_here.html">stage_here</a></span><span class="op">(</span><span class="st">"output/plot.svg"</span><span class="op">)</span>,</span>
+<span>  <span class="kw">function</span><span class="op">(</span><span class="va">f</span><span class="op">)</span> <span class="op">{</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/cairo.html" class="external-link">svg</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">dev.off</a></span><span class="op">(</span><span class="op">)</span> <span class="op">}</span>,</span>
+<span>  text <span class="op">=</span> <span class="st">"CONFIDENTIAL"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>Supports SVG, PDF and all pixel formats supported by the <code>dso watermark</code> CLI.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="api-documentation">API documentation<a class="anchor" aria-label="anchor" href="#api-documentation"></a>
