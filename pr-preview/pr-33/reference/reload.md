@@ -5,7 +5,7 @@ Reloads the current dsoParams configuration into the object.
 ## Usage
 
 ``` r
-reload(params, env = caller_env())
+reload(params, env = rlang::caller_env())
 ```
 
 ## Arguments
