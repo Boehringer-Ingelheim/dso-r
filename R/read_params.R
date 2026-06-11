@@ -76,6 +76,9 @@ read_params <- function(stage_path = NULL, return_list = FALSE) {
   yaml <- yaml12::read_yaml(tmp_config_file)
   unlink(tmp_config_file)
 
+  # Store dso config in the global config environment (e.g. for use by with_watermark)
+  assign("dso", yaml$dso, envir = config_env)
+
   if (return_list) {
     yaml
   } else {

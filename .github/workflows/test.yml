@@ -40,6 +40,19 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
+      - uses: astral-sh/setup-uv@v8.1.0
+
+      - name: Install dso-core and expose `dso` on PATH
+        shell: bash
+        run: |
+          uv tool install dso-core
+          echo "$(uv tool dir)/bin" >> "$GITHUB_PATH"
+          uv tool dir --bin >> "$GITHUB_PATH" 2>/dev/null || true
+
+      - name: Verify dso is available
+        shell: bash
+        run: dso --help
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck

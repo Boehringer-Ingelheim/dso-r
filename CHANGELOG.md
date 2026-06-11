@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## v0.8
 
+### New Features
+
+-   Added `with_watermark(output_file, fun, ...)` — a callback-style wrapper that applies a watermark to plot output via the `dso watermark` CLI. Mirrors the Python `dso.WatermarkedFile` context manager. Supports SVG, PDF and all pixel formats supported by `dso watermark`. When no watermark is configured (and no overrides are passed), the callback is invoked with `output_file` directly with zero overhead.
+-   `read_params()` now stores the `dso` section of the params in the global config env, making it accessible to `with_watermark()` (mirroring Python's `CONFIG.dso_config`).
+
 ### Changed
 
 -   Replaced `yaml` and `purrr` dependencies with `yaml12` for proper YAML 1.2 compliant parsing. `yes`/`no`/`Y`/`N` are now correctly treated as strings (not booleans) without any workaround.

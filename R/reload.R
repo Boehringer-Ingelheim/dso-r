@@ -5,8 +5,9 @@
 #' @param params dsoParams object
 #' @param env environment in which object is located, caller_env() by default
 #' @return The updated dsoParams object.
+#' @importFrom rlang caller_env
 #' @export
-reload <- function(params, env = caller_env()) {
+reload <- function(params, env = rlang::caller_env()) {
   if (!inherits(params, "dsoParams")) {
     stop("The object is not of class 'dsoParams'")
   }

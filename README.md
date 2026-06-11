@@ -54,6 +54,36 @@ and supplying it with the relative path of the stage from project root and a des
 create_stage(name = "subfolder/my_stage", description = "This stage does something")
 ```
 
+### Watermarking plot output
+
+If a `quarto.watermark` section is defined in the project configuration,
+[`with_watermark`](https://boehringer-ingelheim.github.io/dso-r/reference/with_watermark.html)
+applies it to any plot file. This mirrors the Python `dso.WatermarkedFile` context manager:
+the callback receives a temporary path to write to, and the watermark is added via the
+`dso watermark` CLI once the callback returns. When no watermark is configured (and no
+overrides are passed), the callback is invoked with `output_file` directly without any
+extra work.
+
+```r
+# Base graphics
+with_watermark(stage_here("output/plot.png"), function(f) {
+  png(f); plot(1:10); dev.off()
+})
+
+# ggplot2
+p <- ggplot2::ggplot(mtcars, ggplot2::aes(mpg, wt)) + ggplot2::geom_point()
+with_watermark(stage_here("output/plot.pdf"), function(f) ggplot2::ggsave(f, p))
+
+# Override config on a per-call basis
+with_watermark(
+  stage_here("output/plot.svg"),
+  function(f) { svg(f); plot(1:10); dev.off() },
+  text = "CONFIDENTIAL"
+)
+```
+
+Supports SVG, PDF and all pixel formats supported by the `dso watermark` CLI.
+
 ## API documentation
 
 Please refer to the [documentation website](https://boehringer-ingelheim.github.io/dso-r/reference/index.html)
