@@ -13,11 +13,11 @@
 ## Citation
 
 Schreyer D, Sturm G, Schwarzl T, Peltzer A (2026). *dso: dso R companion
-package*. R package version 0.8.
+package*. R package version 0.8.1.
 
     @Manual{,
       title = {dso: dso R companion package},
       author = {Daniel Schreyer and Gregor Sturm and Thomas Schwarzl and Alexander Peltzer},
       year = {2026},
-      note = {R package version 0.8},
+      note = {R package version 0.8.1},
     }
