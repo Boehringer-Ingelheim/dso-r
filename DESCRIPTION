@@ -1,7 +1,7 @@
 Package: dso
 Type: Package
 Title: dso R companion package
-Version: 0.7
+Version: 0.8
 Authors@R: c(
     person("Daniel", "Schreyer", email = "daniel.schreyer.ext@boehringer-ingelheim.com", role = c("aut", "cre")),
     person("Gregor", "Sturm", email = "gregor.sturm@boehringer-ingelheim.com", role = "aut"),
